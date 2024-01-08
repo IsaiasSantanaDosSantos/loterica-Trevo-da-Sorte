@@ -9,6 +9,7 @@
   --white_color: #fff;
   --gray_color: #9b9797;
   --blue_color: #0367a6;
+  --red_color: #e44a4a;
   --defaut_font: "Quicksand", sans-serif;
   --logo_font: "Sabandija ffp";
 }
@@ -184,6 +185,7 @@ body {
 }
 .footerNormalText a {
   color: var(--secundary_color);
+  text-decoration: none;
 }
 form {
   width: 100%;
@@ -193,6 +195,7 @@ form {
   align-items: start;
   row-gap: 10px;
   color: var(--white_color);
+  position: relative;
 }
 .formLabel {
   width: 100%;
@@ -238,6 +241,49 @@ form {
 }
 .developerText a {
   color: var(--secundary_color);
+}
+.errorMsg {
+  font-size: 13px;
+  color: var(--red_color);
+}
+.successSendMessageWindow {
+  position: absolute;
+  top: 35%;
+  left: 4px;
+  width: auto;
+  height: auto;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--white_color);
+  color: var(--black_color);
+  border: 1px solid;
+}
+.addShowAnimation {
+  animation: showAnimation 0.4s linear;
+}
+.addhideAnimation {
+  animation: hideAnimation 0.4s linear;
+}
+
+@keyframes showAnimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes hideAnimation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+.successMsg {
+  font-size: 16px;
+  font-weight: 600;
 }
 /* End of Footer Section */
 

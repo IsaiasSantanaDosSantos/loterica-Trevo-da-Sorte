@@ -60,6 +60,11 @@
     <title>Lotérica Trevo da Sorte Online</title>
     <!-- Local CSS file -->
     <link rel="stylesheet" href="css/index.css" />
+    <!-- Fonte Wesome -->
+    <script
+      src="https://kit.fontawesome.com/6add55d5da.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- NavBar -->
@@ -109,16 +114,23 @@
               <p class="footerNormalText">
                 Rua: Coronel Amélio, 105, sala K,<br />
                 Centro, Pardinho-SP/ 18640-017<br />
-                <a href="tel:1499130-9810" class="footerLinks">
+                <a href="tel:5514991309810" class="footerLinks">
+                  <span class="fa-solid fa-phone footerIcons"></span>
                   (14) 9.9130-9810</a
                 >
               </p>
               <p class="footerNormalText">
-                <a href="" class="footerLinks">(14) 9.9130-9810</a>
+                <a
+                  href="https://api.whatsapp.com/send?phone=5514991309810&text=Ol%C3%A1!%20Quero%20saber%20mais%20informa%C3%A7%C3%B5es%20dos%20bol%C3%B5es%20anuncidos%20no%20site."
+                  class="footerLinks"
+                  ><span class="fa-brands fa-whatsapp footerIcons"></span> (14)
+                  9.9130-9810</a
+                >
               </p>
               <p class="footerNormalText">
                 <a href="mailto:admin@lotericaonline.net" class="footerLinks"
-                  >admin@lotericaonline.net</a
+                  ><span class="fa-regular fa-envelope footerIcons"></span>
+                  admin@lotericaonline.net</a
                 >
               </p>
               <br />
@@ -145,18 +157,34 @@
             </div>
             <div class="footerNewsletterBox">
               <p class="footerTitles">Subscrição de newsletter</p>
-              <form>
+              <form
+                action="https://formsubmit.co/isaias.drmeducacao@gmail.com"
+                method="POST"
+              >
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="http://127.0.0.1:5500/success.html"
+                />
+                <input type="hidden" name="_captcha" value="false" /><input
+                  type="hidden"
+                  name="_autoresponse"
+                  value="Seu e-mail foi cadastrado com sucesso para receber nossa newslatter. Obrigado!"
+                />
                 <label for="email" class="formLabel"
                   >Seu e-mail
                   <input
                     type="email"
                     name="email"
-                    class="inputEmail"
+                    class="inputEmail form-control"
                     autocomplete="off"
                     placeholder="Digite seu e-mail..."
+                    required
                   />
                 </label>
-                <button class="formBtn">Enviar</button>
+
+                <button type="submit" class="formBtn">Enviar</button>
+                <span class="errorMsg"></span>
               </form>
             </div>
           </div>
