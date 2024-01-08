@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://db.onlinewebfonts.com/c/6ea13c6a2db85cc0d9a382773b581e91?family=Sabandija+ffp");
+
+/* Global variables */
+:root {
+  --primary_color: #038c33;
+  --secundary_color: #f2b705;
+  --black_color: #000;
+  --white_color: #fff;
+  --gray_color: #9b9797;
+  --blue_color: #0367a6;
+  --defaut_font: "Quicksand", sans-serif;
+  --logo_font: "Sabandija ffp";
+}
+html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--defaut_font);
+  background-color: var(--white_color);
+}
+
+/* Nav */
+.navSection {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-bottom: 0.7px solid var(--gray_color);
+}
+.navContainer {
+  width: 90%;
+  max-width: 1100px;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logoBox {
+  width: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.trevoDaSorteLogo {
+  width: 50px;
+}
+.colorLogo {
+  display: none;
+}
+.logoLink {
+  text-decoration: none;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  column-gap: 10px;
+  line-height: 14px;
+}
+.logoLink .logoTexts {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+.defautText {
+  font-weight: 900;
+  font-size: 12px;
+  color: var(--blue_color);
+}
+.logoText {
+  font-size: 20px;
+  display: inline;
+  letter-spacing: -1;
+  font-weight: bold;
+  color: var(--black_color);
+}
+.navMenu {
+  width: auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  list-style: none;
+  column-gap: 20px;
+}
+.navMenu li a {
+  color: var(--gray_color);
+  text-decoration: none;
+  font-weight: bold;
+}
+.navMenu li a:hover,
+.navMenu li a:active {
+  color: var(--secundary_color);
+}
+.actived {
+  color: var(--secundary_color) !important;
+}
+.listBtnBox {
+  width: 35px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+  display: none;
+}
+.listBtnBox:active {
+  transform: rotate(-15deg);
+}
+.listBtn {
+  width: 100%;
+  height: 3px;
+  background-color: var(--black_color);
+  border-radius: 20px;
+}
+/* End of Nav */
+
+/* Media Query */
+
+@media (max-width: 768px) {
+  .navMenu {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px 40px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    row-gap: 20px;
+    background-color: #ffffffb4;
+    backdrop-filter: blur(4px);
+  }
+  .listBtnBox {
+    display: flex;
+  }
+}
