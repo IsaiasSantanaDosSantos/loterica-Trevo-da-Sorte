@@ -18,4 +18,5 @@ function mobileMenuEvents() {
   }
 }
 
+// Functions called
 mobileMenuEvents();
