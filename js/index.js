@@ -59,7 +59,39 @@ function mobileMenuEvents() {
 }
 
 // Create balloons cards
-function createimemaniaCards(data) {
+function createDuplaSenaCards(data) {
+  try {
+    const balloonCardsBox = document.querySelector('[data-cards="dupla-sena"]');
+    let countCard = 0;
+    const listSize = data.prices.length;
+    for (let i = 0; i < listSize; i++) {
+      countCard++;
+      balloonCardsBox.innerHTML += `<!-- Card ${countCard} -->`;
+      const cardBox = document.createElement("div");
+      cardBox.classList.add("balloonsCard");
+      cardBox.innerHTML = `
+      <div class="balloonsCardImgBox">
+        <img
+          src="${data.prices[i].imagePath}"
+          data-src="${data.prices[i].imagePath}"
+          loading="lazy"
+          alt="Game Image"
+          class="balloonsCardImg"
+          width=""
+          height=""
+        />
+      </div>
+      <p class="typeGame">${data.type}</p>
+      <p class="valueGame">R$ ${data.prices[i].price}</p>
+      `;
+      balloonCardsBox.appendChild(cardBox);
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+function createTimemaniaCards(data) {
   try {
     const balloonCardsBox = document.querySelector('[data-cards="timemania"]');
     let countCard = 0;
@@ -266,9 +298,9 @@ function callSpecificFunctions(data) {
       } else if (data.dataBalloons[i].type === "Bolão +Milionária") {
         createMilionarioCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Timemania") {
-        createimemaniaCards(data.dataBalloons[i]);
+        createTimemaniaCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Dupla Sena") {
-        // console.log("Função que cria Dupla Sena");
+        createDuplaSenaCards(data.dataBalloons[i]);
       } else {
         console.log("Não");
       }
