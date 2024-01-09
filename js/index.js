@@ -59,15 +59,43 @@ function mobileMenuEvents() {
 }
 
 // Create balloons cards
-function createQuinaCards(data) {
+function createQDiaSorteCards(data) {
   try {
-    const balloonCardsBox = document.querySelector('[data-cards="loto-facil"]');
+    const balloonCardsBox = document.querySelector('[data-cards="dia-sorte"]');
     let countCard = 0;
     const listSize = data.prices.length;
-    console.log(data);
-    console.log(data.prices);
-    console.log(data.type);
-    console.log(data.prices[0]);
+    for (let i = 0; i < listSize; i++) {
+      countCard++;
+      balloonCardsBox.innerHTML += `<!-- Card ${countCard} -->`;
+      const cardBox = document.createElement("div");
+      cardBox.classList.add("balloonsCard");
+      cardBox.innerHTML = `
+      <div class="balloonsCardImgBox">
+        <img
+          src="${data.prices[i].imagePath}"
+          data-src="${data.prices[i].imagePath}"
+          loading="lazy"
+          alt="Game Image"
+          class="balloonsCardImg"
+          width=""
+          height=""
+        />
+      </div>
+      <p class="typeGame">${data.type}</p>
+      <p class="valueGame">R$ ${data.prices[i].price}</p>
+      `;
+      balloonCardsBox.appendChild(cardBox);
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+function createQuinaCards(data) {
+  try {
+    const balloonCardsBox = document.querySelector('[data-cards="quina"]');
+    let countCard = 0;
+    const listSize = data.prices.length;
     for (let i = 0; i < listSize; i++) {
       countCard++;
       balloonCardsBox.innerHTML += `<!-- Card ${countCard} -->`;
@@ -100,10 +128,6 @@ function createLotofacilCards(data) {
     const balloonCardsBox = document.querySelector('[data-cards="loto-facil"]');
     let countCard = 0;
     const listSize = data.prices.length;
-    console.log(data);
-    console.log(data.prices);
-    console.log(data.type);
-    console.log(data.prices[0]);
     for (let i = 0; i < listSize; i++) {
       countCard++;
       balloonCardsBox.innerHTML += `<!-- Card ${countCard} -->`;
@@ -172,9 +196,9 @@ function callSpecificFunctions(data) {
       } else if (data.dataBalloons[i].type === "Bolão Lotofácil") {
         createLotofacilCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Quina") {
-        // console.log("Função que cria Quina");
+        createQuinaCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Dia de Sorte") {
-        // console.log("Função que cria Dia de Sorte");
+        createQDiaSorteCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão +Milionária") {
         // console.log("Função que cria +Milionária");
       } else if (data.dataBalloons[i].type === "Bolão Timemania") {
