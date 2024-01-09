@@ -10,6 +10,13 @@
   --gray_color: #7f7171;
   --blue_color: #0367a6;
   --red_color: #bf5656;
+  --megaSena_color: #6fbf36;
+  --lotofacil_color: #f06292;
+  --quina_color: #ab47bc;
+  --diaSorte_color: #efb436;
+  --milionario_color: #455a64;
+  --timeMania_color: #ffeb3b;
+  --duplaSena_color: #96243a;
   --defaut_font: "Quicksand", sans-serif;
   --logo_font: "Sabandija ffp";
 }
@@ -215,7 +222,6 @@ body {
   width: 100%;
   padding: 60px 0;
   background-color: var(--white_color);
-  margin-bottom: 17px;
 }
 
 .ourBalloonsContainer {
@@ -230,7 +236,110 @@ body {
 .ourBalloonsTitle {
   font-size: 40px;
   font-weight: 900;
-  margin-bottom: 40px;
+  text-align: center;
+}
+.MegaSenaBalloonsSection {
+  width: 100%;
+  background-color: var(--megaSena_color);
+  padding: 60px 0;
+}
+.balloonsContent {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.balloonsTitleBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px dashed var(--gray_color);
+  color: var(--white_color);
+}
+.balloonsTitle {
+  font-size: 40px;
+  text-align: center;
+}
+.balloonsSubtitle {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.balloonsCardsBox {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.balloonsCard {
+  width: 23%;
+  min-width: 165px;
+  max-width: 243px;
+  height: auto;
+  padding: 20px 0;
+  background-color: var(--white_color);
+  border-radius: 5px;
+  box-shadow: 0 0 41px 16px #0000004a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.balloonsCard:hover {
+  transform: scale(1.05);
+}
+.balloonsCard:active {
+  filter: brightness(75%);
+}
+.balloonsCardImgBox {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.balloonsCardImg {
+  width: 100%;
+}
+.typeGame {
+  font-size: 20px;
+  color: var(--secundary_color);
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.valueGame {
+  font-size: 20px;
+  text-align: center;
+  animation: valueAnimation 5s infinite;
+}
+
+@keyframes valueAnimation {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
 }
 /* End of Our Balloons section */
 
@@ -242,7 +351,6 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  z-index: -1;
   position: relative;
 }
 .footerSection::before {
@@ -492,6 +600,12 @@ form {
     max-width: 500px;
   }
   /* End of Header section  */
+
+  /* Our Balloons section */
+  .balloonsCard {
+    width: 45%;
+  }
+  /* End of Our Balloons section */
 }
 
 @media (max-width: 576px) {
@@ -499,4 +613,23 @@ form {
   .developerText {
     text-align: center;
   }
+
+  /* Our Balloons section */
+  .ourBalloonsTitle {
+    font-size: 30px;
+  }
+  /* End of Our Balloons section */
+}
+@media (max-width: 400px) {
+  /* Our Balloons section */
+  .balloonsTitle {
+    font-size: 30px;
+  }
+  .balloonsSubtitle {
+    font-size: 16px;
+  }
+  .balloonsCard {
+    width: 90%;
+  }
+  /* End of Our Balloons section */
 }

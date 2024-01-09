@@ -58,6 +58,83 @@ function mobileMenuEvents() {
   }
 }
 
+// Create balloons cards
+function createMegaSenaCards(data) {
+  try {
+    const megaSenaCardBox = document.querySelector(
+      '[data-cards="balloonsCard"]'
+    );
+    let countCard = 0;
+    const listSize = data.prices.length;
+    console.log(data);
+    console.log(data.prices);
+    console.log(data.type);
+    console.log(data.prices[0]);
+    for (let i = 0; i < listSize; i++) {
+      countCard++;
+      megaSenaCardBox.innerHTML += `<!-- Card ${countCard} -->`;
+      const cardBox = document.createElement("div");
+      cardBox.classList.add("balloonsCard");
+      cardBox.innerHTML = `
+      <div class="balloonsCardImgBox">
+        <img
+          src="${data.prices[i].imagePath}"
+          data-src="${data.prices[i].imagePath}"
+          loading="lazy"
+          alt="Game Image"
+          class="balloonsCardImg"
+          width=""
+          height=""
+        />
+      </div>
+      <p class="typeGame">${data.type}</p>
+      <p class="valueGame">R$ ${data.prices[i].price}</p>
+      `;
+      megaSenaCardBox.appendChild(cardBox);
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+function callSpecificFunctions(data) {
+  try {
+    const dataSize = data.dataBalloons.length;
+    // console.log(data.dataBalloons);
+    for (let i = 0; i < dataSize; i++) {
+      if (data.dataBalloons[i].type === "Bolão Mega Sena") {
+        createMegaSenaCards(data.dataBalloons[i]);
+      } else if (data.dataBalloons[i].type === "Bolão Lotofácil") {
+        // console.log("Função que cria Lotofácil");
+      } else if (data.dataBalloons[i].type === "Bolão Quina") {
+        // console.log("Função que cria Quina");
+      } else if (data.dataBalloons[i].type === "Bolão Dia de Sorte") {
+        // console.log("Função que cria Dia de Sorte");
+      } else if (data.dataBalloons[i].type === "Bolão +Milionária") {
+        // console.log("Função que cria +Milionária");
+      } else if (data.dataBalloons[i].type === "Bolão Timemania") {
+        // console.log("Função que cria Timemania");
+      } else if (data.dataBalloons[i].type === "Bolão Dupla Sena") {
+        // console.log("Função que cria Dupla Sena");
+      } else {
+        console.log("Não");
+      }
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+function fetchCardsInfo() {
+  try {
+    fetch("../dataBalloons.json")
+      .then((response) => response.json())
+      .then((data) => callSpecificFunctions(data));
+  } catch (error) {
+    console.warn(error);
+  }
+}
+// End of code create balloons cards
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
+fetchCardsInfo();

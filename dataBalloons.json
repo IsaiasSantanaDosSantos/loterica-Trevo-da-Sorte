@@ -1,0 +1,522 @@
+{
+  "dataBalloons": [
+    {
+      "type": "Bolão Mega Sena",
+      "prices": [
+        {
+          "price": "19,68",
+          "games": 10,
+          "numbersPerGame": 7,
+          "quotas": 24,
+          "imagePath": "/img/games/mega-sena-19.webp"
+        },
+        {
+          "price": "29,83",
+          "games": 3,
+          "numbersPerGame": 8,
+          "quotas": 19,
+          "imagePath": "/img/games/mega-sena-29.webp"
+        },
+        {
+          "price": "49,73",
+          "games": 5,
+          "numbersPerGame": 8,
+          "quotas": 19,
+          "imagePath": "/img/games/mega-sena-49.webp"
+        },
+        {
+          "price": "84,30",
+          "games": 100,
+          "numbersPerGame": 6,
+          "quotas": 8,
+          "imagePath": "/img/games/mega-sena-84.webp"
+        },
+        {
+          "price": "99,22",
+          "games": 7,
+          "numbersPerGame": 9,
+          "quotas": 40,
+          "imagePath": "/img/games/mega-sena-99.webp"
+        },
+        {
+          "price": "118,12",
+          "games": 50,
+          "numbersPerGame": 7,
+          "quotas": 20,
+          "imagePath": "/img/games/mega-sena-118.webp"
+        },
+        {
+          "price": "202,50",
+          "games": 5,
+          "numbersPerGame": 9,
+          "quotas": 14,
+          "imagePath": "/img/games/mega-sena-202.webp"
+        }
+      ]
+    },
+    {
+      "type": "Bolão Lotofácil",
+      "prices": [
+        {
+          "price": "19,96",
+          "games": 2,
+          "numbersPerGame": 16,
+          "quotas": 13,
+          "imagePath": "/img/games/lotofacil-9.webp"
+        },
+        {
+          "price": "20,73",
+          "games": 8,
+          "numbersPerGame": 16,
+          "quotas": 25,
+          "imagePath": "/img/games/lotofacil-20.webp"
+        },
+        {
+          "price": "30,00",
+          "games": 50,
+          "numbersPerGame": 15,
+          "quotas": 5,
+          "imagePath": "/img/games/lotofacil-30.webp"
+        },
+        {
+          "price": "46,22",
+          "games": 80,
+          "numbersPerGame": 15,
+          "quotas": 7,
+          "imagePath": "/img/games/lotofacil-46.webp"
+        },
+        {
+          "price": "50,07",
+          "games": 2,
+          "numbersPerGame": 17,
+          "quotas": 22,
+          "imagePath": "/img/games/lotofacil-50.webp"
+        },
+        {
+          "price": "57,78",
+          "games": 100,
+          "numbersPerGame": 15,
+          "quotas": 2,
+          "imagePath": "/img/games/lotofacil-57.webp"
+        },
+        {
+          "price": "110,16",
+          "games": 1,
+          "numbersPerGame": 18,
+          "quotas": 30,
+          "imagePath": "/img/games/lotofacil-110.webp"
+        },
+        {
+          "price": "194,40",
+          "games": 6,
+          "numbersPerGame": 17,
+          "quotas": 17,
+          "imagePath": "/img/games/lotofacil-194.webp"
+        }
+      ]
+    },
+    {
+      "type": "Bolão Quina",
+      "prices": [
+        {
+          "price": "10,12",
+          "games": 10,
+          "numbersPerGame": 6,
+          "quotas": 20,
+          "imagePath": "/img/games/quina-10.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                  "type_two": "5 Jogos com 4 dezenas (quadra)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "2 Jogos com 4 dezenas (quadra)",
+                  "type_two": "4 Jogos com 3 dezenas (terno)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "3 Jogos com 3 dezenas (terno)",
+                  "type_two": "3 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "4 Jogos com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "20,25",
+          "games": 10,
+          "numbersPerGame": 6,
+          "quotas": 10,
+          "imagePath": "/img/games/quina-20.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                  "type_two": "5 Jogos com 4 dezenas (quadra)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "2 Jogos com 4 dezenas (quadra)",
+                  "type_two": "4 Jogos com 3 dezenas (terno)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "3 Jogos com 3 dezenas (terno)",
+                  "type_two": "3 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "4 Jogos com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "25,31",
+          "games": 5,
+          "numbersPerGame": 7,
+          "quotas": 14,
+          "imagePath": "/img/games/quina-25.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                  "type_two": "10 Jogos com 4 dezenas (quadra)",
+                  "type_three": "10 Jogos com 3 dezenas (terno)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "3 Jogos com 4 dezenas (quadra)",
+                  "type_two": "12 Jogos com 3 dezenas (terno)",
+                  "type_three": "6 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "6 Jogos com 3 dezenas (terno)",
+                  "type_two": "12 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "10 Jogos com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "33,75",
+          "games": 10,
+          "numbersPerGame": 7,
+          "quotas": 21,
+          "imagePath": "/img/games/quina-33.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                  "type_two": "10 Jogos com 4 dezenas (quadra)",
+                  "type_three": "10 Jogos com 3 dezenas (terno)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "3 Jogos com 4 dezenas (quadra)",
+                  "type_two": "12 Jogos com 3 dezenas (terno)",
+                  "type_three": "6 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "6 Jogos com 3 dezenas (terno)",
+                  "type_two": "12 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "10 Jogos com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "VALOR ERRADO!",
+          "games": 50,
+          "numbersPerGame": 5,
+          "quotas": 5,
+          "imagePath": "/img/games/quina-33-2.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "1 Jogo com 4 dezenas (quadra)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "1 Jogo com 3 dezenas (terno)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "1 Jogo com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "48,20",
+          "games": 100,
+          "numbersPerGame": 5,
+          "quotas": 7,
+          "imagePath": "/img/games/quina-48.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "1 Jogo com 4 dezenas (quadra)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "1 Jogo com 3 dezenas (terno)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "1 Jogo com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "96,40",
+          "games": 200,
+          "numbersPerGame": 5,
+          "quotas": 7,
+          "imagePath": "/img/games/quina-96.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "1 Jogo com 4 dezenas (quadra)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "1 Jogo com 3 dezenas (terno)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "1 Jogo com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "price": "99,46",
+          "games": 10,
+          "numbersPerGame": 8,
+          "quotas": 19,
+          "imagePath": "/img/games/quina-99.webp",
+          "award": [
+            {
+              "amount_award": [
+                { "title": "Quantidade de prêmios a receber acertando:" },
+                {
+                  "number": 5,
+                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                  "type_two": "15 Jogos com 4 dezenas (quadra)",
+                  "type_three": "30 Jogos com 3 dezenas (terno)",
+                  "type_four": "10 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 4,
+                  "type_one": "4 Jogos com 4 dezenas (quadra)",
+                  "type_two": "24 Jogos com 3 dezenas (terno)",
+                  "type_three": "24 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 3,
+                  "type_one": "10 Jogos com 3 dezenas (terno)",
+                  "type_two": "30 Jogos com 2 dezenas (duque)"
+                },
+                {
+                  "number": 2,
+                  "type_one": "20 Jogos com 2 dezenas (duque)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Bolão Dia de Sorte",
+      "prices": [
+        {
+          "price": "9,81",
+          "games": 4,
+          "numbersPerGame": 8,
+          "quotas": 11,
+          "imagePath": "/img/games/dia-9.webp"
+        },
+        {
+          "price": "20,76",
+          "games": 10,
+          "numbersPerGame": 8,
+          "quotas": 13,
+          "imagePath": "/img/games/dia-20.webp"
+        },
+        {
+          "price": "50,62",
+          "games": 10,
+          "numbersPerGame": 9,
+          "quotas": 24,
+          "imagePath": "/img/games/dia-50.webp"
+        },
+        {
+          "price": "101,25",
+          "games": 3,
+          "numbersPerGame": 10,
+          "quotas": 12,
+          "imagePath": "/img/games/dia-101.webp"
+        }
+      ]
+    },
+    {
+      "type": "Bolão +Milionária",
+      "prices": [
+        {
+          "price": "10,30",
+          "games": 14,
+          "numbersPerGame": 6,
+          "shamrocks": 2,
+          "quotas": 11,
+          "imagePath": "/img/games/milionario-10.webp"
+        },
+        {
+          "price": "20,25",
+          "games": 5,
+          "numbersPerGame": 7,
+          "shamrocks": 2,
+          "quotas": 14,
+          "imagePath": "/img/games/milionario-20.webp"
+        },
+        {
+          "price": "49,61",
+          "games": 14,
+          "numbersPerGame": 7,
+          "shamrocks": 2,
+          "quotas": 16,
+          "imagePath": "/img/games/milionario-49.webp"
+        },
+        {
+          "price": "103,08",
+          "games": 5,
+          "numbersPerGame": 8,
+          "shamrocks": 2,
+          "quotas": 12,
+          "imagePath": "/img/games/milionario-103.webp"
+        }
+      ]
+    },
+    {
+      "type": "Bolão Timemania",
+      "prices": [
+        {
+          "price": "5,89",
+          "games": 15,
+          "numbersPerGame": 10,
+          "quotas": 12,
+          "imagePath": "/img/games/time-5.webp"
+        },
+        {
+          "price": "10,12",
+          "games": 15,
+          "numbersPerGame": 10,
+          "quotas": 7,
+          "imagePath": "/img/games/time-10.webp"
+        },
+        {
+          "price": "17,71",
+          "games": 15,
+          "numbersPerGame": 10,
+          "quotas": 4,
+          "imagePath": "/img/games/time-17.webp"
+        },
+        {
+          "price": "35,43",
+          "games": 15,
+          "numbersPerGame": 10,
+          "quotas": 2,
+          "imagePath": "/img/games/time-35.webp"
+        }
+      ]
+    },
+    {
+      "type": "Bolão Dupla Sena",
+      "prices": [
+        {
+          "price": "10,26",
+          "games": 10,
+          "numbersPerGame": 7,
+          "quotas": 23,
+          "imagePath": "/img/games/dupla-10.webp"
+        },
+        {
+          "price": "19,68",
+          "games": 10,
+          "numbersPerGame": 7,
+          "quotas": 12,
+          "imagePath": "/img/games/dupla-19.webp"
+        },
+        {
+          "price": "33,07",
+          "games": 7,
+          "numbersPerGame": 8,
+          "quotas": 20,
+          "imagePath": "/img/games/dupla-33.webp"
+        },
+        {
+          "price": "101,25",
+          "games": 3,
+          "numbersPerGame": 10,
+          "quotas": 21,
+          "imagePath": "/img/games/dupla-101.webp"
+        }
+      ]
+    }
+  ]
+}
