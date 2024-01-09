@@ -59,7 +59,71 @@ function mobileMenuEvents() {
 }
 
 // Create balloons cards
-function createQDiaSorteCards(data) {
+function createimemaniaCards(data) {
+  try {
+    const balloonCardsBox = document.querySelector('[data-cards="timemania"]');
+    let countCard = 0;
+    const listSize = data.prices.length;
+    for (let i = 0; i < listSize; i++) {
+      countCard++;
+      balloonCardsBox.innerHTML += `<!-- Card ${countCard} -->`;
+      const cardBox = document.createElement("div");
+      cardBox.classList.add("balloonsCard");
+      cardBox.innerHTML = `
+      <div class="balloonsCardImgBox">
+        <img
+          src="${data.prices[i].imagePath}"
+          data-src="${data.prices[i].imagePath}"
+          loading="lazy"
+          alt="Game Image"
+          class="balloonsCardImg"
+          width=""
+          height=""
+        />
+      </div>
+      <p class="typeGame">${data.type}</p>
+      <p class="valueGame">R$ ${data.prices[i].price}</p>
+      `;
+      balloonCardsBox.appendChild(cardBox);
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+function createMilionarioCards(data) {
+  try {
+    const balloonCardsBox = document.querySelector('[data-cards="milionario"]');
+    let countCard = 0;
+    const listSize = data.prices.length;
+    for (let i = 0; i < listSize; i++) {
+      countCard++;
+      balloonCardsBox.innerHTML += `<!-- Card ${countCard} -->`;
+      const cardBox = document.createElement("div");
+      cardBox.classList.add("balloonsCard");
+      cardBox.innerHTML = `
+      <div class="balloonsCardImgBox">
+        <img
+          src="${data.prices[i].imagePath}"
+          data-src="${data.prices[i].imagePath}"
+          loading="lazy"
+          alt="Game Image"
+          class="balloonsCardImg"
+          width=""
+          height=""
+        />
+      </div>
+      <p class="typeGame">${data.type}</p>
+      <p class="valueGame">R$ ${data.prices[i].price}</p>
+      `;
+      balloonCardsBox.appendChild(cardBox);
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+function createDiaSorteCards(data) {
   try {
     const balloonCardsBox = document.querySelector('[data-cards="dia-sorte"]');
     let countCard = 0;
@@ -198,11 +262,11 @@ function callSpecificFunctions(data) {
       } else if (data.dataBalloons[i].type === "Bolão Quina") {
         createQuinaCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Dia de Sorte") {
-        createQDiaSorteCards(data.dataBalloons[i]);
+        createDiaSorteCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão +Milionária") {
-        // console.log("Função que cria +Milionária");
+        createMilionarioCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Timemania") {
-        // console.log("Função que cria Timemania");
+        createimemaniaCards(data.dataBalloons[i]);
       } else if (data.dataBalloons[i].type === "Bolão Dupla Sena") {
         // console.log("Função que cria Dupla Sena");
       } else {

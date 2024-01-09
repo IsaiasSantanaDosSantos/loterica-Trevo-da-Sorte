@@ -367,7 +367,7 @@ body {
   padding: 30px 0 80px;
 }
 .timeBalloonsSection h3,
-.timeBalloonsSection p {
+.timeBalloonsSection .balloonsSubtitle {
   color: var(--gray_color);
 }
 .duplaBalloonsSection {
