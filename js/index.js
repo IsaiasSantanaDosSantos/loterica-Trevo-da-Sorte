@@ -61,9 +61,7 @@ function mobileMenuEvents() {
 // Create balloons cards
 function createMegaSenaCards(data) {
   try {
-    const megaSenaCardBox = document.querySelector(
-      '[data-cards="balloonsCard"]'
-    );
+    const megaSenaCardBox = document.querySelector('[data-cards="mega-sena"]');
     let countCard = 0;
     const listSize = data.prices.length;
     console.log(data);

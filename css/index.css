@@ -341,6 +341,40 @@ body {
     transform: rotate(-5deg);
   }
 }
+.lofofacilBalloonsSection {
+  width: 100%;
+  background-color: var(--lotofacil_color);
+  padding: 60px 0;
+}
+.quinaBalloonsSection {
+  width: 100%;
+  background-color: var(--quina_color);
+  padding: 60px 0;
+}
+.diaSorteBalloonsSection {
+  width: 100%;
+  background-color: var(--diaSorte_color);
+  padding: 60px 0;
+}
+.milionarioBalloonsSection {
+  width: 100%;
+  background-color: var(--milionario_color);
+  padding: 60px 0;
+}
+.timeBalloonsSection {
+  width: 100%;
+  background-color: var(--timeMania_color);
+  padding: 60px 0;
+}
+.timeBalloonsSection h3,
+.timeBalloonsSection p {
+  color: var(--gray_color);
+}
+.duplaBalloonsSection {
+  width: 100%;
+  background-color: var(--duplaSena_color);
+  padding: 60px 0;
+}
 /* End of Our Balloons section */
 
 /* Footer Section */
