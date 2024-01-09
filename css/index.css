@@ -241,7 +241,7 @@ body {
 .MegaSenaBalloonsSection {
   width: 100%;
   background-color: var(--megaSena_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 .balloonsContent {
   width: 90%;
@@ -344,27 +344,27 @@ body {
 .lofofacilBalloonsSection {
   width: 100%;
   background-color: var(--lotofacil_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 .quinaBalloonsSection {
   width: 100%;
   background-color: var(--quina_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 .diaSorteBalloonsSection {
   width: 100%;
   background-color: var(--diaSorte_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 .milionarioBalloonsSection {
   width: 100%;
   background-color: var(--milionario_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 .timeBalloonsSection {
   width: 100%;
   background-color: var(--timeMania_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 .timeBalloonsSection h3,
 .timeBalloonsSection p {
@@ -373,7 +373,7 @@ body {
 .duplaBalloonsSection {
   width: 100%;
   background-color: var(--duplaSena_color);
-  padding: 60px 0;
+  padding: 30px 0 80px;
 }
 /* End of Our Balloons section */
 
