@@ -84,6 +84,13 @@ function createDuplaSenaCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -116,6 +123,13 @@ function createTimemaniaCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -148,6 +162,13 @@ function createMilionarioCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -180,6 +201,13 @@ function createDiaSorteCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -212,6 +240,13 @@ function createQuinaCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -244,6 +279,13 @@ function createLotofacilCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -276,6 +318,13 @@ function createMegaSenaCards(data) {
       <p class="typeGame">${data.type}</p>
       <p class="valueGame">R$ ${data.prices[i].price}</p>
       `;
+      const elementClicked = document.createElement("div");
+      elementClicked.classList.add("cardClicked");
+      elementClicked.setAttribute("data-index", countCard - 1);
+      let typeName = data.type.replace(/ /g, "-");
+      elementClicked.setAttribute("name", typeName);
+      elementClicked.setAttribute("data-value", data.prices[i].price);
+      cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
   } catch (error) {
@@ -314,13 +363,35 @@ function fetchCardsInfo() {
   try {
     fetch("../dataBalloons.json")
       .then((response) => response.json())
-      .then((data) => callSpecificFunctions(data));
+      .then((data) => {
+        callSpecificFunctions(data);
+        console.log(data);
+      });
   } catch (error) {
     console.warn(error);
   }
+}
+
+// Cards events
+function redirectCards() {
+  const allCards = document.querySelector(".allBalloonsCard");
+
+  function cardsEvents(e) {
+    const elCkd = e.target;
+    if (elCkd.classList.contains("cardClicked")) {
+      const dataIndexValue = elCkd.getAttribute("data-index");
+      const nameValue = elCkd.getAttribute("name");
+      const productValue = elCkd.getAttribute("data-value");
+      window.location.href = `/product.html?product=${nameValue}&productIndex=${dataIndexValue}&productValue=${productValue}`;
+      // window.location.href = `https://loterica-trevo-da-sorte.vercel.app/product?product=${nameValue}&productIndex=${dataIndexValue}&productValue=${productValue}`;
+    }
+  }
+
+  allCards.addEventListener("click", cardsEvents);
 }
 // End of code create balloons cards
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
 fetchCardsInfo();
+redirectCards();

@@ -127,25 +127,29 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
-                  "type_two": "5 Jogos com 4 dezenas (quadra)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "2 Jogos com 4 dezenas (quadra)",
-                  "type_two": "4 Jogos com 3 dezenas (terno)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "3 Jogos com 3 dezenas (terno)",
-                  "type_two": "3 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "4 Jogos com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                      "type_two": "5 Jogos com 4 dezenas (quadra)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "2 Jogos com 4 dezenas (quadra)",
+                      "type_two": "4 Jogos com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "3 Jogos com 3 dezenas (terno)",
+                      "type_two": "3 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "4 Jogos com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -160,25 +164,29 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
-                  "type_two": "5 Jogos com 4 dezenas (quadra)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "2 Jogos com 4 dezenas (quadra)",
-                  "type_two": "4 Jogos com 3 dezenas (terno)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "3 Jogos com 3 dezenas (terno)",
-                  "type_two": "3 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "4 Jogos com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                      "type_two": "5 Jogos com 4 dezenas (quadra)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "2 Jogos com 4 dezenas (quadra)",
+                      "type_two": "4 Jogos com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "3 Jogos com 3 dezenas (terno)",
+                      "type_two": "3 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "4 Jogos com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -193,27 +201,31 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
-                  "type_two": "10 Jogos com 4 dezenas (quadra)",
-                  "type_three": "10 Jogos com 3 dezenas (terno)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "3 Jogos com 4 dezenas (quadra)",
-                  "type_two": "12 Jogos com 3 dezenas (terno)",
-                  "type_three": "6 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "6 Jogos com 3 dezenas (terno)",
-                  "type_two": "12 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "10 Jogos com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                      "type_two": "10 Jogos com 4 dezenas (quadra)",
+                      "type_three": "10 Jogos com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "3 Jogos com 4 dezenas (quadra)",
+                      "type_two": "12 Jogos com 3 dezenas (terno)",
+                      "type_three": "6 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "6 Jogos com 3 dezenas (terno)",
+                      "type_two": "12 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "10 Jogos com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -228,27 +240,31 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
-                  "type_two": "10 Jogos com 4 dezenas (quadra)",
-                  "type_three": "10 Jogos com 3 dezenas (terno)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "3 Jogos com 4 dezenas (quadra)",
-                  "type_two": "12 Jogos com 3 dezenas (terno)",
-                  "type_three": "6 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "6 Jogos com 3 dezenas (terno)",
-                  "type_two": "12 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "10 Jogos com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                      "type_two": "10 Jogos com 4 dezenas (quadra)",
+                      "type_three": "10 Jogos com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "3 Jogos com 4 dezenas (quadra)",
+                      "type_two": "12 Jogos com 3 dezenas (terno)",
+                      "type_three": "6 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "6 Jogos com 3 dezenas (terno)",
+                      "type_two": "12 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "10 Jogos com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -263,22 +279,26 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "1 Jogo com 4 dezenas (quadra)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "1 Jogo com 3 dezenas (terno)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "1 Jogo com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "1 Jogo com 4 dezenas (quadra)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "1 Jogo com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "1 Jogo com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -293,22 +313,26 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "1 Jogo com 4 dezenas (quadra)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "1 Jogo com 3 dezenas (terno)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "1 Jogo com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "1 Jogo com 4 dezenas (quadra)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "1 Jogo com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "1 Jogo com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -323,22 +347,26 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "1 Jogo com 4 dezenas (quadra)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "1 Jogo com 3 dezenas (terno)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "1 Jogo com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "1 Jogo com 4 dezenas (quadra)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "1 Jogo com 3 dezenas (terno)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "1 Jogo com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
@@ -353,28 +381,32 @@
           "award": [
             {
               "amount_award": [
-                { "title": "Quantidade de prêmios a receber acertando:" },
                 {
-                  "number": 5,
-                  "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
-                  "type_two": "15 Jogos com 4 dezenas (quadra)",
-                  "type_three": "30 Jogos com 3 dezenas (terno)",
-                  "type_four": "10 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 4,
-                  "type_one": "4 Jogos com 4 dezenas (quadra)",
-                  "type_two": "24 Jogos com 3 dezenas (terno)",
-                  "type_three": "24 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 3,
-                  "type_one": "10 Jogos com 3 dezenas (terno)",
-                  "type_two": "30 Jogos com 2 dezenas (duque)"
-                },
-                {
-                  "number": 2,
-                  "type_one": "20 Jogos com 2 dezenas (duque)"
+                  "title": "Quantidade de prêmios a receber acertando:",
+                  "content": [
+                    {
+                      "number": 5,
+                      "type_one": "1 Jogo com as 5 dezenas (prêmio Máximo)",
+                      "type_two": "15 Jogos com 4 dezenas (quadra)",
+                      "type_three": "30 Jogos com 3 dezenas (terno)",
+                      "type_four": "10 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 4,
+                      "type_one": "4 Jogos com 4 dezenas (quadra)",
+                      "type_two": "24 Jogos com 3 dezenas (terno)",
+                      "type_three": "24 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 3,
+                      "type_one": "10 Jogos com 3 dezenas (terno)",
+                      "type_two": "30 Jogos com 2 dezenas (duque)"
+                    },
+                    {
+                      "number": 2,
+                      "type_one": "20 Jogos com 2 dezenas (duque)"
+                    }
+                  ]
                 }
               ]
             }
