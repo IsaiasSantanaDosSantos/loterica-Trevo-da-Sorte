@@ -365,7 +365,7 @@ function fetchCardsInfo() {
       .then((response) => response.json())
       .then((data) => {
         callSpecificFunctions(data);
-        console.log(data);
+        // console.log(data);
       });
   } catch (error) {
     console.warn(error);
@@ -390,8 +390,16 @@ function redirectCards() {
   allCards.addEventListener("click", cardsEvents);
 }
 // End of code create balloons cards
+
+function getCurretYear() {
+  const curretYear = document.querySelector(".curretYear");
+  const date = new Date();
+  curretYear.textContent = date.getFullYear();
+}
+
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
 fetchCardsInfo();
 redirectCards();
+getCurretYear();

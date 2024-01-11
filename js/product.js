@@ -1,8 +1,7 @@
 function assemblingOthersBalloonsPage(data, product, index, price) {
   try {
     // console.log(data);
-    const whatsAppLink =
-      "https://api.whatsapp.com/send?phone=5512974011729&text=Ol%C3%A1!%20Quero%20saber%20mais%20informa%C3%A7%C3%B5es%20dos%20bol%C3%B5es%20anuncidos%20no%20site";
+    const whatsAppLink = `https://api.whatsapp.com/send?phone=5512974011729&text=Ol%C3%A1!%20Acessei%20o%20site%20e%20quero%20comprar%20o%20${product}%20de%20R$%20${price}.%20Como%20devo%20prosseguir%20para%20concluir%20a%20compra?`;
     const infoBox = document.querySelector(".ourBalloonsContainer");
     function createProductInfo() {
       for (let i = 0; i < data.prices.length; i++) {

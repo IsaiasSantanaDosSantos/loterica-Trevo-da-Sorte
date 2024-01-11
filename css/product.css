@@ -300,6 +300,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  color: var(--white_color);
 }
 .footerSection::before {
   content: "";
@@ -358,29 +359,51 @@ body {
   column-gap: 10px;
   row-gap: 50px;
 }
-.footeraddressBox,
-.footerLegalInfoBox,
-.footerNewsletterBox {
-  width: 32%;
+.footeraddressBox {
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
 }
+.footerLegalInfoBox {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.footerNewsletterBox {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+.footerAllInfo {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  column-gap: 20px;
+}
 .footerTitles {
   font-size: 18px;
   font-weight: 600;
-  color: var(--white_color);
   margin-bottom: 15px;
+  color: var(--secundary_color);
 }
 .footerNormalText {
   font-size: 16px;
-  color: var(--gray_color);
   line-height: 25px;
 }
 .footerNormalText a {
-  color: var(--secundary_color);
   text-decoration: none;
+  color: var(--white_color);
+}
+
+.footerNormalText a:hover {
+  color: var(--secundary_color);
 }
 form {
   width: 100%;
@@ -397,7 +420,7 @@ form {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
-  color: var(--gray_color);
+  color: var(--white_color);
 }
 .inputEmail {
   width: 100%;
