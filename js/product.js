@@ -7,7 +7,7 @@ function assemblingOthersBalloonsPage(data, product, index, price) {
     function createProductInfo() {
       for (let i = 0; i < data.prices.length; i++) {
         if (data.prices[i].price === price) {
-          console.log(data.type);
+          // console.log(data.type);
           const ourBalloonsImgBox = document.createElement("div");
           ourBalloonsImgBox.classList.add("ourBalloonsImgBox");
           ourBalloonsImgBox.innerHTML = `
@@ -185,8 +185,18 @@ function fetchCardsInfo(product, index, price) {
               price
             );
           } else if (
-            data.dataBalloons[i].type === product &&
-            product !== "Bolão Quina"
+            product !== "Bolão Quina" &&
+            data.dataBalloons[i].type == product
+          ) {
+            assemblingOthersBalloonsPage(
+              data.dataBalloons[i],
+              product,
+              index,
+              price
+            );
+          } else if (
+            product === "Bolão  Milionária" &&
+            data.dataBalloons[i].type === "Bolão +Milionária"
           ) {
             assemblingOthersBalloonsPage(
               data.dataBalloons[i],
@@ -195,21 +205,6 @@ function fetchCardsInfo(product, index, price) {
               price
             );
           }
-
-          //   else {
-          //     assemblingOthersBalloonsPage(
-          //       data.dataBalloons[i],
-          //       product,
-          //       index,
-          //       price
-          //     );
-          //   }
-
-          /*
-          Os bolões de +Milionários não está abrindo na página de produtos. Eu até adicionei um "else" que funcionou para ele, mas estava trazendo dois tipos de bolões na mesma página.
-          Preciso verificar a lógica...
-          
-          */
         }
       });
   } catch (error) {
