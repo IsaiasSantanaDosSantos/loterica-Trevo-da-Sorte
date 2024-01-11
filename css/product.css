@@ -359,6 +359,7 @@ body {
   column-gap: 10px;
   row-gap: 50px;
 }
+/*  */
 .footeraddressBox {
   width: auto;
   display: flex;
@@ -385,13 +386,14 @@ body {
   display: flex;
   justify-content: start;
   align-items: start;
-  column-gap: 20px;
+  column-gap: 19px;
 }
+
 .footerTitles {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 15px;
   color: var(--secundary_color);
+  margin-bottom: 15px;
 }
 .footerNormalText {
   font-size: 16px;
@@ -510,6 +512,34 @@ form {
 /* End of Footer Section */
 
 /* Media Query */
+@media (max-width: 992px) {
+  /* Footer Section */
+  .footerLegalInfoBox {
+    width: 58%;
+  }
+  .footerAllInfo {
+    width: 100%;
+    column-gap: 20px;
+    justify-content: space-between;
+  }
+  .footeraddressBox {
+    width: 36%;
+  }
+  .footerNewsletterBox {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerTitles,
+  .formLabel {
+    text-align: center;
+  }
+  input::placeholder {
+    text-align: center;
+  }
+  /* End of Footer Section */
+}
+
 @media (max-width: 825px) {
   /* Balloons section */
   .ourBalloonsContainer {
@@ -563,19 +593,6 @@ form {
     margin: auto;
   }
   /* End of Our Balloons section */
-
-  .footerInforBox,
-  .footerLastTextsBox {
-    flex-direction: column;
-  }
-  .footeraddressBox,
-  .footerLegalInfoBox,
-  .footerNewsletterBox {
-    width: 100%;
-  }
-  .developerText {
-    margin-top: 15px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -600,6 +617,35 @@ form {
     display: flex;
   }
   /* End of Nav section  */
+
+  /* Footer Section */
+  .footerLegalInfoBox {
+    width: 100%;
+    align-items: center;
+  }
+  .footerAllInfo {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footeraddressBox {
+    width: 100%;
+    align-items: center;
+  }
+  .footerNormalText {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .footerInforBox {
+    row-gap: 30px;
+  }
+  .copyrightText,
+  .developerText {
+    text-align: center;
+  }
+  .developerText a {
+    white-space: nowrap;
+  }
+  /* End of Footer Section */
 }
 
 @media (max-width: 576px) {
@@ -624,18 +670,13 @@ form {
     margin: auto auto auto 0;
   }
   /* End of Our Balloons section */
-  /* Footer section  */
-  .copyrightText,
-  .developerText {
-    text-align: center;
+
+  /* Footer Section */
+  .footerLastTextsBox {
+    flex-direction: column;
+    row-gap: 10px;
   }
-  .balloonsType {
-    justify-content: start;
-  }
-  .ourBalloonsTextsSubtitle {
-    text-align: start;
-  }
-  /* End of Footer section  */
+  /* End of Footer Section */
 }
 
 @media (max-width: 380px) {

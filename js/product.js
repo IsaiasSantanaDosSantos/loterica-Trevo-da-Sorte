@@ -34,7 +34,7 @@ function assemblingOthersBalloonsPage(data, product, index, price) {
               } Números</p>
               ${
                 data.prices[i].shamrocks
-                  ? `<p class="balloonsTypeExempleText"> - ${data.prices[i].shamrocks} </p>`
+                  ? `<p class="balloonsTypeExempleText"> - ${data.prices[i].shamrocks} Trevos</p>`
                   : ""
               }
               <p class="balloonsTypeExempleText">- ${
