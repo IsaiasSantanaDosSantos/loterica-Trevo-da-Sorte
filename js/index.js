@@ -397,9 +397,83 @@ function getCurretYear() {
   curretYear.textContent = date.getFullYear();
 }
 
+function showAndEventPopup() {
+  const wrapperPopup = document.querySelector(".wrapperPopup");
+  const eighteenMoreBtn = document.querySelector(".eighteenMore");
+  const minusEighteenBtn = document.querySelector(".minusEighteen");
+  const popupBox = document.querySelector(".popupBox");
+
+  eighteenMoreBtn.addEventListener("click", () => {
+    popupBox.innerHTML = `<p class="popupTitle" style="margin:0">Obrigado(a) pela confirmação!</p>`;
+    const windowBox = document.querySelector(".windowBox");
+    if (windowBox) windowBox.remove();
+    setTimeout(() => {
+      popupBox.classList.remove("addPopupAnimation");
+      popupBox.classList.add("removePopupAnimation");
+      setTimeout(() => {
+        document.querySelector("body").classList.remove("no-scroll");
+        wrapperPopup.style.display = "none";
+        wrapperPopup.remove();
+        const currentTime = new Date().getTime();
+        const endOfDay = new Date();
+        endOfDay.setHours(23, 59, 59, 999);
+        const expirationTime = endOfDay.getTime();
+        localStorage.setItem("popupExpirationTime", expirationTime);
+      }, 500);
+    }, 500);
+  });
+
+  setTimeout(() => {
+    const wrapperPopup = document.querySelector(".wrapperPopup");
+    const popupBox = document.querySelector(".popupBox");
+    document.querySelector("body").classList.add("no-scroll");
+    if (wrapperPopup) wrapperPopup.style.display = "flex";
+    setTimeout(() => {
+      if (popupBox) {
+        popupBox.style.display = "flex";
+        popupBox.classList.add("addPopupAnimation");
+      }
+    }, 180);
+  }, 800);
+
+  minusEighteenBtn.addEventListener("click", () => {
+    // const windowBox1 = document.querySelector(".windowBox");
+    const windowBox = document.createElement("div");
+    if (windowBox) windowBox.remove();
+    windowBox.classList.add("windowBox");
+    windowBox.innerHTML = `
+        <div class="windowBox">
+          <div class="windowMask"></div>
+          <h2 class="titleWindowBox">
+            Desculpe, o acesso é permitido apenas para maiores de idade.
+          </h2>
+          <a href="/" class="windowLink">Voltar a página inícial</a>
+        </div>
+      `;
+    document.querySelector("body").appendChild(windowBox);
+    windowBox.classList.add("addPopupAnimation");
+    document.querySelector("body").classList.add("no-scroll");
+    console.log(windowBox);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapperPopup = document.querySelector(".wrapperPopup");
+  const expirationTime = localStorage.getItem("popupExpirationTime");
+
+  if (expirationTime && new Date().getTime() < parseInt(expirationTime, 10)) {
+    document.querySelector("body").classList.remove("no-scroll");
+    wrapperPopup.style.display = "none";
+    wrapperPopup.remove();
+  } else {
+    localStorage.removeItem("popupExpirationTime");
+  }
+});
+
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
 fetchCardsInfo();
 redirectCards();
 getCurretYear();
+showAndEventPopup();
