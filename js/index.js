@@ -43,6 +43,7 @@ function mobileMenuEvents() {
   const listMenu = document.querySelector(".navMenu");
   const todaNavbar = document.querySelector(".navSection");
   const btnHamburguer = document.querySelectorAll(".listBtn");
+  const screemSize = window.innerWidth;
 
   let listMenuDisplay = window.getComputedStyle(listMenu);
   let listMenuCurretDisplay = listMenuDisplay.getPropertyValue("display");
@@ -53,14 +54,18 @@ function mobileMenuEvents() {
   function showHideListMenu() {
     if (listMenuCurretDisplay === "none" && isOpenMenu === false) {
       listMenu.style.display = "flex";
-      todaNavbar.style.backgroundColor = "#ffffff";
-      btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
+      if (screemSize > 768) {
+        todaNavbar.style.backgroundColor = "#ffffff";
+        btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
+      }
       document.querySelector("body").classList.add("no-scroll");
       isOpenMenu = true;
     } else {
       listMenu.style.display = "none";
-      todaNavbar.style.backgroundColor = "transparent";
-      btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
+      if (screemSize > 768) {
+        todaNavbar.style.backgroundColor = "transparent";
+        btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
+      }
       document.querySelector("body").classList.remove("no-scroll");
       isOpenMenu = false;
     }
