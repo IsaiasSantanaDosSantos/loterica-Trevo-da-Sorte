@@ -1,7 +1,7 @@
 function changeNavBarColor() {
   const todaNavbar = document.querySelector(".navSection");
-  const linkClass = document.querySelectorAll(".navMenu li");
   const btnHamburguer = document.querySelectorAll(".listBtn");
+  const linkClass = document.querySelectorAll(".navMenu li");
   const whitelogo = document.querySelector(".transparentLogo");
   const blackLogo = document.querySelector(".colorLogo");
   const navHeight = "40";
@@ -41,6 +41,9 @@ function changeNavBarColor() {
 function mobileMenuEvents() {
   const mobileMenu = document.querySelector(".listBtnBox");
   const listMenu = document.querySelector(".navMenu");
+  const todaNavbar = document.querySelector(".navSection");
+  const btnHamburguer = document.querySelectorAll(".listBtn");
+
   let listMenuDisplay = window.getComputedStyle(listMenu);
   let listMenuCurretDisplay = listMenuDisplay.getPropertyValue("display");
   let isOpenMenu = false;
@@ -50,9 +53,15 @@ function mobileMenuEvents() {
   function showHideListMenu() {
     if (listMenuCurretDisplay === "none" && isOpenMenu === false) {
       listMenu.style.display = "flex";
+      todaNavbar.style.backgroundColor = "#ffffff";
+      btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
+      document.querySelector("body").classList.add("no-scroll");
       isOpenMenu = true;
     } else {
       listMenu.style.display = "none";
+      todaNavbar.style.backgroundColor = "transparent";
+      btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
+      document.querySelector("body").classList.remove("no-scroll");
       isOpenMenu = false;
     }
   }
@@ -404,6 +413,7 @@ function showAndEventPopup() {
   const popupBox = document.querySelector(".popupBox");
 
   eighteenMoreBtn.addEventListener("click", () => {
+    document.querySelector("body").classList.remove("no-scroll");
     popupBox.innerHTML = `<p class="popupTitle" style="margin:0">Obrigado pela confirmação!</p>`;
     const windowBox = document.querySelector(".windowBox");
     if (windowBox) windowBox.remove();
@@ -411,7 +421,6 @@ function showAndEventPopup() {
       popupBox.classList.remove("addPopupAnimation");
       popupBox.classList.add("removePopupAnimation");
       setTimeout(() => {
-        document.querySelector("body").classList.remove("no-scroll");
         wrapperPopup.style.display = "none";
         wrapperPopup.remove();
         const currentTime = new Date().getTime();
@@ -426,8 +435,11 @@ function showAndEventPopup() {
   setTimeout(() => {
     const wrapperPopup = document.querySelector(".wrapperPopup");
     const popupBox = document.querySelector(".popupBox");
-    document.querySelector("body").classList.add("no-scroll");
-    if (wrapperPopup) wrapperPopup.style.display = "flex";
+
+    if (wrapperPopup) {
+      wrapperPopup.style.display = "flex";
+      document.querySelector("body").classList.add("no-scroll");
+    }
     setTimeout(() => {
       if (popupBox) {
         popupBox.style.display = "flex";
