@@ -54,18 +54,18 @@ function mobileMenuEvents() {
   function showHideListMenu() {
     if (listMenuCurretDisplay === "none" && isOpenMenu === false) {
       listMenu.style.display = "flex";
-      if (screemSize > 768) {
-        todaNavbar.style.backgroundColor = "#ffffff";
-        btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
-      }
+      // if (screemSize > 768) {
+      //   todaNavbar.style.backgroundColor = "#ffffff";
+      //   btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
+      // }
       document.querySelector("body").classList.add("no-scroll");
       isOpenMenu = true;
     } else {
       listMenu.style.display = "none";
-      if (screemSize > 768) {
-        todaNavbar.style.backgroundColor = "transparent";
-        btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
-      }
+      // if (screemSize > 768) {
+      //   todaNavbar.style.backgroundColor = "transparent";
+      //   btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
+      // }
       document.querySelector("body").classList.remove("no-scroll");
       isOpenMenu = false;
     }
