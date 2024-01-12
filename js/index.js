@@ -404,7 +404,7 @@ function showAndEventPopup() {
   const popupBox = document.querySelector(".popupBox");
 
   eighteenMoreBtn.addEventListener("click", () => {
-    popupBox.innerHTML = `<p class="popupTitle" style="margin:0">Obrigado(a) pela confirmação!</p>`;
+    popupBox.innerHTML = `<p class="popupTitle" style="margin:0">Obrigado pela confirmação!</p>`;
     const windowBox = document.querySelector(".windowBox");
     if (windowBox) windowBox.remove();
     setTimeout(() => {
