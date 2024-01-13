@@ -1,19 +1,22 @@
+function getTopDistanceFromNavBar() {
+  const navHeight = 40;
+  return navHeight;
+}
+
 function changeNavBarColor() {
   const todaNavbar = document.querySelector(".navSection");
   const btnHamburguer = document.querySelectorAll(".listBtn");
   const linkClass = document.querySelectorAll(".navMenu li");
   const whitelogo = document.querySelector(".transparentLogo");
   const blackLogo = document.querySelector(".colorLogo");
-  const navHeight = "40";
 
   window.addEventListener("scroll", function () {
-    if (window.scrollY > navHeight) {
+    if (window.scrollY > getTopDistanceFromNavBar()) {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "#ffffff";
       todaNavbar.style.borderBottom = " 1px solid rgba(34, 34, 34, 0.05)";
       //   whitelogo.style.display = "none";
       //   blackLogo.style.display = "block";
-
       for (let index = 0; index < linkClass.length; index++) {
         linkClass[index].style.color = "#000";
       }
@@ -21,7 +24,7 @@ function changeNavBarColor() {
         btnHamburguer[indice].style.backgroundColor = "#000";
       }
     }
-    if (window.scrollY < navHeight) {
+    if (window.scrollY < getTopDistanceFromNavBar()) {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "transparent";
       todaNavbar.style.borderBottom = "none";
@@ -40,34 +43,35 @@ function changeNavBarColor() {
 
 function mobileMenuEvents() {
   const mobileMenu = document.querySelector(".listBtnBox");
-  const listMenu = document.querySelector(".navMenu");
   const todaNavbar = document.querySelector(".navSection");
   const btnHamburguer = document.querySelectorAll(".listBtn");
   const screemSize = window.innerWidth;
 
-  let listMenuDisplay = window.getComputedStyle(listMenu);
-  let listMenuCurretDisplay = listMenuDisplay.getPropertyValue("display");
-  let isOpenMenu = false;
-
   mobileMenu.addEventListener("click", showHideListMenu);
 
   function showHideListMenu() {
-    if (listMenuCurretDisplay === "none" && isOpenMenu === false) {
+    const listMenu = document.querySelector(".navMenu");
+
+    if (listMenu.style.display != "flex") {
       listMenu.style.display = "flex";
-      // if (screemSize > 768) {
-      //   todaNavbar.style.backgroundColor = "#ffffff";
-      //   btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
-      // }
-      document.querySelector("body").classList.add("no-scroll");
-      isOpenMenu = true;
+
+      if (screemSize < 768) {
+        if (window.scrollY <= getTopDistanceFromNavBar()) {
+          todaNavbar.style.backgroundColor = "#ffffff";
+          btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
+        }
+      }
     } else {
       listMenu.style.display = "none";
-      // if (screemSize > 768) {
-      //   todaNavbar.style.backgroundColor = "transparent";
-      //   btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
-      // }
-      document.querySelector("body").classList.remove("no-scroll");
-      isOpenMenu = false;
+      if (screemSize < 768) {
+        if (window.scrollY <= getTopDistanceFromNavBar()) {
+          todaNavbar.style.backgroundColor = "transparent";
+          btnHamburguer.forEach((e) => (e.style.backgroundColor = "#ffffff"));
+        } else {
+          todaNavbar.style.backgroundColor = "#ffffff";
+          btnHamburguer.forEach((e) => (e.style.backgroundColor = "#000"));
+        }
+      }
     }
   }
 }

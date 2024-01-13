@@ -561,7 +561,6 @@ form {
     text-align: center;
   }
   .balloonsType {
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     column-gap: 20px;
@@ -660,15 +659,7 @@ form {
   .balloonsExemploPrizes {
     justify-content: start;
   }
-  .ourBalloonsTextsTitle {
-    text-align: start;
-  }
-  .balloonsPrice {
-    justify-content: start;
-  }
-  .balloonsLink {
-    margin: auto auto auto 0;
-  }
+
   /* End of Our Balloons section */
 
   /* Footer Section */
@@ -683,7 +674,6 @@ form {
   /* Our Balloons section */
   .balloonsType {
     flex-direction: column;
-    align-items: start;
   }
   /* End of Our Balloons section */
 }
