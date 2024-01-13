@@ -9,6 +9,7 @@ function changeNavBarColor() {
   const linkClass = document.querySelectorAll(".navMenu li");
   const whitelogo = document.querySelector(".transparentLogo");
   const blackLogo = document.querySelector(".colorLogo");
+  const listMenu = document.querySelector(".navMenu");
 
   window.addEventListener("scroll", function () {
     if (window.scrollY > getTopDistanceFromNavBar()) {
@@ -38,6 +39,19 @@ function changeNavBarColor() {
         btnHamburguer[indice].style.backgroundColor = "#ffffff";
       }
     }
+    if (listMenu.style.display == "flex") {
+      todaNavbar.style.transition = "0.8s";
+      todaNavbar.style.backgroundColor = "#ffffff";
+      todaNavbar.style.borderBottom = " 1px solid rgba(34, 34, 34, 0.05)";
+      //   whitelogo.style.display = "none";
+      //   blackLogo.style.display = "block";
+      for (let index = 0; index < linkClass.length; index++) {
+        linkClass[index].style.color = "#000";
+      }
+      for (let indice = 0; indice < btnHamburguer.length; indice++) {
+        btnHamburguer[indice].style.backgroundColor = "#000";
+      }
+    }
   });
 }
 
@@ -54,6 +68,7 @@ function mobileMenuEvents() {
 
     if (listMenu.style.display != "flex") {
       listMenu.style.display = "flex";
+      todaNavbar.style.backgroundColor = "#ffffff";
 
       if (screemSize < 768) {
         if (window.scrollY <= getTopDistanceFromNavBar()) {
