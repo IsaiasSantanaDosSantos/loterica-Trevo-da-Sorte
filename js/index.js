@@ -15,7 +15,7 @@ function changeNavBarColor() {
     if (window.scrollY > getTopDistanceFromNavBar()) {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "#ffffff";
-      todaNavbar.style.borderBottom = " 1px solid rgba(34, 34, 34, 0.05)";
+      todaNavbar.style.boxShadow = "0 0 41px 16px #00000017";
       //   whitelogo.style.display = "none";
       //   blackLogo.style.display = "block";
       for (let index = 0; index < linkClass.length; index++) {
@@ -29,6 +29,7 @@ function changeNavBarColor() {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "transparent";
       todaNavbar.style.borderBottom = "none";
+      todaNavbar.style.boxShadow = "none";
       //   whitelogo.style.display = "block";
       //   blackLogo.style.display = "none";
 
@@ -42,7 +43,7 @@ function changeNavBarColor() {
     if (listMenu.style.display == "flex") {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "#ffffff";
-      todaNavbar.style.borderBottom = " 1px solid rgba(34, 34, 34, 0.05)";
+      todaNavbar.style.boxShadow = "none";
       //   whitelogo.style.display = "none";
       //   blackLogo.style.display = "block";
       for (let index = 0; index < linkClass.length; index++) {
@@ -416,7 +417,6 @@ function redirectCards() {
       const nameValue = elCkd.getAttribute("name");
       const productValue = elCkd.getAttribute("data-value");
       window.location.href = `/product.html?product=${nameValue}&productIndex=${dataIndexValue}&productValue=${productValue}`;
-      // window.location.href = `https://loterica-trevo-da-sorte.vercel.app/product?product=${nameValue}&productIndex=${dataIndexValue}&productValue=${productValue}`;
     }
   }
 

@@ -223,7 +223,7 @@ function changeNavBarColor() {
     if (window.scrollY > navHeight) {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "#ffffff";
-      todaNavbar.style.borderBottom = " 1px solid rgba(34, 34, 34, 0.05)";
+      todaNavbar.style.boxShadow = "0 0 41px 16px #00000017";
       //   whitelogo.style.display = "none";
       //   blackLogo.style.display = "block";
 
@@ -238,6 +238,7 @@ function changeNavBarColor() {
       todaNavbar.style.transition = "0.8s";
       todaNavbar.style.backgroundColor = "transparent";
       todaNavbar.style.borderBottom = "none";
+      todaNavbar.style.boxShadow = "none";
       //   whitelogo.style.display = "block";
       //   blackLogo.style.display = "none";
 
