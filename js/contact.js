@@ -273,6 +273,21 @@ function handleVerification(event) {
   // });
 }
 
+// function inicializarMapa() {
+//   var coordenadas = { lat: -34.397, lng: 150.644 }; // substitua com as coordenadas desejadas
+//   var mapa = new google.maps.Map(document.getElementById("mapa"), {
+//     zoom: 8,
+//     center: coordenadas,
+//   });
+
+//   // Adicione um marcador
+//   var marcador = new google.maps.Marker({
+//     position: coordenadas,
+//     map: mapa,
+//     title: "Seu Marcador",
+//   });
+// }
+
 document
   .querySelector(".headerForm")
   .addEventListener("submit", handleVerification);
@@ -280,3 +295,4 @@ document
 changeNavBarColor();
 mobileMenuEvents();
 getCurretYear();
+// inicializarMapa();
