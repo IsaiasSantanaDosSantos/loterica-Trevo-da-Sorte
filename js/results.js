@@ -98,6 +98,38 @@ function mobileMenuEvents() {
   }
 }
 
+function openGameInfo(event) {
+  const elCkd = event.target;
+  const elClickedList = document.querySelectorAll(".elementClicked");
+  const gameContentList = document.querySelectorAll(".gameInfoContent");
+  const gameIconList = document.querySelectorAll(".gameIcon");
+  let activeIdx = false;
+
+  for (let i = 0; i < elClickedList.length; i++) {
+    if (elCkd === elClickedList[i]) {
+      const contentElement = gameContentList[i];
+
+      // Se o elemento clicado já possui a classe, remova-a
+      if (contentElement.classList.contains("showGameContent")) {
+        contentElement.classList.remove("showGameContent");
+        gameIconList[i].classList.remove("rotateIcon");
+        activeIdx = false;
+        // console.log("Elemento clicado duas vezes: ", activeIdx);
+      } else {
+        // Caso contrário, adicione a classe
+        contentElement.classList.add("showGameContent");
+        gameIconList[i].classList.add("rotateIcon");
+        activeIdx = true;
+        // console.log("Elemento clicado uma vez: ", activeIdx);
+      }
+    } else {
+      // Se não é o elemento clicado, remova a classe
+      gameContentList[i].classList.remove("showGameContent");
+      gameIconList[i].classList.remove("rotateIcon");
+    }
+  }
+}
+
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
