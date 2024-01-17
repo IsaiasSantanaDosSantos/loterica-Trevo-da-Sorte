@@ -97,8 +97,49 @@ function mobileMenuEvents() {
     }
   }
 }
+// Create elements
+async function createGameElement() {
+  const gameList = [
+    "Mega-Sena",
+    "Lotofácil",
+    "Quina",
+    "Dia de Sorte",
+    "+Milionária",
+    "Timemania",
+    "Dupla-Sena",
+  ];
 
-function openGameInfo(event) {
+  function accentsRemover(str) {
+    return str
+      .replace("+", "mais")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s/g, "")
+      .replace(/[^\w\s]/gi, "");
+  }
+
+  for (let i = 0; i < gameList.length; i++) {
+    const headerResultsBox = document.querySelector(".headerResultsBox");
+    headerResultsBox.innerHTML += `<!-- Game ${i + 1} -->`;
+    const idElement = accentsRemover(gameList[i].toLowerCase());
+    const eachResultsBox = document.createElement("div");
+    eachResultsBox.classList.add("eachResultsBox");
+    eachResultsBox.innerHTML = `
+    <div class="headerResultGame ${idElement}">
+      <p class="headerGameName">${gameList[i]}</p>
+      <span class="fa-solid fa-angle-down gameIcon"></span>
+      <div class="elementClicked" d="${idElement}" onclick="openGameInfo(event,id)"></div>
+    </div>
+    <div class="gameInfoContent"></div>
+    `;
+    headerResultsBox.appendChild(eachResultsBox);
+
+    await fetchGameResult(idElement, i, gameList[i]);
+  }
+}
+
+// Games events
+function openGameInfo(event, id) {
   const elCkd = event.target;
   const elClickedList = document.querySelectorAll(".elementClicked");
   const gameContentList = document.querySelectorAll(".gameInfoContent");
@@ -129,8 +170,100 @@ function openGameInfo(event) {
     }
   }
 }
+// Games fetch
+async function fetchGameResult(id, index, name) {
+  try {
+    const urlSearched = "https://loteriascaixa-api.herokuapp.com/api/";
+    const gameInfo = document.querySelectorAll(`.gameInfoContent`)[index];
+
+    const json = await fetch(`${urlSearched}${id}/latest`).then((resposta) =>
+      resposta.json()
+    );
+    const novoConteudo = criarConteudoHtml(json, name);
+    gameInfo.innerHTML = novoConteudo;
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+// Get games results
+function criarConteudoHtml(json, name) {
+  try {
+    /*
+    AGORA FALTA MANIPULAR AS INFORMAÇÕES QUE VEM DA API E ADICIONA-LAS CADA UMA EM SEU LUGAR
+    
+    */
+    console.log(json);
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("contentContainer");
+    contentContainer.innerHTML = `
+    <div class="lineContent">
+      <div class="nameNumberDateBox">
+        <p class="gameName">Nome jogo: <span>${name}</span></p>
+        <p class="gameNumber">Número Concurso: <span>2356</span></p>
+        <p class="gameDate">Data concurso: <span>15/01/2024</span></p>
+      </div>
+      <div class="drawnDozensBox">
+        <p class="drawnDozens">
+          Dezenas sorteadas: <span>[5, 10, 15, 20, 25, 30]</span>
+        </p>
+        <p class="orderOfDrawnNumbers">
+          Ordem sorteadas: <span>[3, 1, 5, 2, 6, 4]</span>
+        </p>
+      </div>
+      <div class="accumulatedDrawLocationBox">
+        <p class="accumulated">Acumulou: <span>Sim</span></p>
+        <p class="drawLocation">
+          Local do sorteio: <span>São Paulo-SP</span>
+        </p>
+      </div>
+
+      <div class="nextInformation">
+        <p class="awards">Premiações:</p>
+        <div>
+          <p class="allAwards">
+            Acertos: <span class="returnAPI">6 acertos</span>
+          </p>
+          <p class="allAwards">
+            Faixa: <span class="returnAPI">1</span>
+          </p>
+          <p class="allAwards">
+            Ganhadores: <span class="returnAPI">1</span>
+          </p>
+          <p class="allAwards">
+            Valor do premio: <span class="returnAPI">1</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nextValueBox">
+      <p class="specialAccumulatedValue">
+        Valor especial acumulado: <span>2286174.15</span>
+      </p>
+      <p class="accumulatedContestValue">
+        Valor acumulado no concurso: <span>2286174.15</span>
+      </p>
+      <p class="accumulatedValueNextCompetition">
+        Valor acumulado próx. concurso: <span>2286174.15</span>
+      </p>
+      <p class="valueRaised">
+        Valor arrecadado: <span>2286174.15</span>
+      </p>
+      <p class="estimatedValueNextCompetition">
+        Valor estimado proximo concurso:
+        <span>2286174.15</span>
+      </p>
+    </div>
+    `;
+    return contentContainer.outerHTML;
+  } catch (error) {
+    console.warn(error);
+  }
+}
 
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
 getCurretYear();
+createGameElement();
