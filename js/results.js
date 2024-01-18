@@ -180,6 +180,7 @@ async function fetchGameResult(id, index, name) {
       resposta.json()
     );
     const novoConteudo = criarConteudoHtml(json, name);
+    createAwardsInfo(json);
     gameInfo.innerHTML = novoConteudo;
   } catch (error) {
     console.warn(error);
@@ -189,79 +190,109 @@ async function fetchGameResult(id, index, name) {
 // Get games results
 function criarConteudoHtml(json, name) {
   try {
-    /*
-    AGORA FALTA MANIPULAR AS INFORMAÇÕES QUE VEM DA API E ADICIONA-LAS CADA UMA EM SEU LUGAR
-    
-    */
-    console.log(json);
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("contentContainer");
     contentContainer.innerHTML = `
     <div class="lineContent">
       <div class="nameNumberDateBox">
         <p class="gameName">Nome jogo: <span>${name}</span></p>
-        <p class="gameNumber">Número Concurso: <span>2356</span></p>
-        <p class="gameDate">Data concurso: <span>15/01/2024</span></p>
+        <p class="gameNumber">Número Concurso: <span>${json.concurso}</span></p>
+        <p class="gameDate">Data concurso: <span>${json.data}</span></p>
       </div>
       <div class="drawnDozensBox">
         <p class="drawnDozens">
-          Dezenas sorteadas: <span>[5, 10, 15, 20, 25, 30]</span>
+          Dezenas sorteadas: <span>[${json.dezenas
+            .join(", ")
+            .replace(/,/g, ", ")}]</span>
         </p>
         <p class="orderOfDrawnNumbers">
-          Ordem sorteadas: <span>[3, 1, 5, 2, 6, 4]</span>
+          Ordem sorteadas: <span>[${json.dezenasOrdemSorteio
+            .join(", ")
+            .replace(/,/g, ", ")}]</span>
         </p>
       </div>
       <div class="accumulatedDrawLocationBox">
-        <p class="accumulated">Acumulou: <span>Sim</span></p>
+        <p class="accumulated">Acumulou: <span>${
+          json.acumulou ? "Sim" : "Não"
+        }</span></p>
         <p class="drawLocation">
-          Local do sorteio: <span>São Paulo-SP</span>
+          Local do sorteio: <span>${json.local}</span>
         </p>
       </div>
-
       <div class="nextInformation">
         <p class="awards">Premiações:</p>
-        <div>
-          <p class="allAwards">
-            Acertos: <span class="returnAPI">6 acertos</span>
-          </p>
-          <p class="allAwards">
-            Faixa: <span class="returnAPI">1</span>
-          </p>
-          <p class="allAwards">
-            Ganhadores: <span class="returnAPI">1</span>
-          </p>
-          <p class="allAwards">
-            Valor do premio: <span class="returnAPI">1</span>
-          </p>
-        </div>
+        <table>
+          <thead>
+            <tr class="headerLineTable">
+              <th><b>Acertos</b></th>
+              <th><b>Faixa</b></th>
+              <th><b>Ganhadores</b></th>
+              <th><b>Valor do prêmio</b></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
 
     <div class="nextValueBox">
       <p class="specialAccumulatedValue">
-        Valor especial acumulado: <span>2286174.15</span>
+        Valor especial acumulado: <span>${
+          json.valorAcumuladoConcursoEspecial
+        }</span>
       </p>
       <p class="accumulatedContestValue">
-        Valor acumulado no concurso: <span>2286174.15</span>
+        Valor acumulado no concurso: <span>${
+          json.valorAcumuladoConcurso_0_5
+        }</span>
       </p>
       <p class="accumulatedValueNextCompetition">
-        Valor acumulado próx. concurso: <span>2286174.15</span>
+        Valor acumulado próx. concurso: <span>${
+          json.valorAcumuladoProximoConcurso
+        }</span>
       </p>
       <p class="valueRaised">
-        Valor arrecadado: <span>2286174.15</span>
+        Valor arrecadado: <span>${json.valorArrecadado}</span>
       </p>
       <p class="estimatedValueNextCompetition">
         Valor estimado proximo concurso:
-        <span>2286174.15</span>
+        <span>${json.valorEstimadoProximoConcurso}</span>
       </p>
+      
+      
     </div>
+    <script>
+    
+    </script>
     `;
+
     return contentContainer.outerHTML;
   } catch (error) {
     console.warn(error);
   }
 }
-
+function createAwardsInfo(json) {
+  try {
+    const nextInformation = document.querySelectorAll("tbody");
+    let jsonfile = json.premiacoes;
+    for (let e = 0; e < nextInformation.length; e++) {
+      for (let i = 0; i < jsonfile.length; i++) {
+        if (e === i) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td  class="leftLine firstColor">${jsonfile[i].descricao}</td>
+            <td class="centerLine secundColor">${jsonfile[i].faixa}</td>
+            <td  class="centerLine firstColor">${jsonfile[i].ganhadores}</td>
+            <td  class="centerLine secundColor">${jsonfile[i].valorPremio}</td>
+          `;
+          nextInformation[e].appendChild(tr);
+        }
+      }
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+}
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();

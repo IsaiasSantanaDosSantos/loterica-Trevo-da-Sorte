@@ -216,7 +216,30 @@ body {
   padding: 0 15px;
   border-radius: 5px;
   margin-bottom: 20px;
+  color: var(--black_color);
 }
+.eachResultsBox:nth-child(1) {
+  background-color: var(--megaSena_color);
+}
+.eachResultsBox:nth-child(2) {
+  background-color: var(--lotofacil_color);
+}
+.eachResultsBox:nth-child(3) {
+  background-color: var(--quina_color);
+}
+.eachResultsBox:nth-child(4) {
+  background-color: var(--diaSorte_color);
+}
+.eachResultsBox:nth-child(5) {
+  background-color: var(--milionario_color);
+}
+.eachResultsBox:nth-child(6) {
+  background-color: var(--timeMania_color);
+}
+.eachResultsBox:nth-child(7) {
+  background-color: var(--duplaSena_color);
+}
+
 .headerResultGame {
   width: 100%;
   display: flex;
@@ -257,31 +280,84 @@ body {
   overflow: hidden;
 }
 .showGameContent {
-  height: 400px;
+  height: 385px;
   padding-bottom: 15px;
 }
 .lineContent {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: start;
   margin-bottom: 15px;
 }
 
-.nameNumberDateBox,
-.nextInformation {
-  width: 48%;
+.nameNumberDateBox {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 25px;
   align-items: start;
   row-gap: 15px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid;
+}
+.nextInformation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.drawnDozensBox,
+.accumulatedDrawLocationBox {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: start;
+  row-gap: 5px;
+  margin-bottom: 5px;
+  column-gap: 25px;
+  border-bottom: 1px solid;
+}
+table {
+  width: 100%;
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 5px;
+}
+th {
+  border: 1px solid;
+  font-size: 15px;
+}
+td {
+  border: 1px solid;
+  font-size: 14px;
+}
+.leftLine {
+  padding-left: 5px;
+}
+.centerLine {
+  text-align: center;
+}
+.headerLineTable {
+  background-color: #b5bff4;
+  color: var(--black_color);
+}
+tbody tr:nth-child(odd) {
+  background-color: #e6e6e6;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
 }
 .nameNumberDateBox span {
   font-weight: 600;
 }
-.gameName,
-.allAwards {
+.gameName {
   font-size: 16px;
 }
 .awards {
@@ -311,9 +387,14 @@ body {
   align-items: start;
   row-gap: 5px;
   flex-wrap: wrap;
+  border: 1px solid;
+  padding: 5px;
 }
 .nextValueBox p {
   width: 48%;
+}
+.contentContainer span {
+  font-weight: bold;
 }
 /* End of Header section  */
 
@@ -669,8 +750,14 @@ form {
   .headerTextsBox {
     align-items: center;
   }
-  */ .headerBtn {
+  .headerBtn {
     margin: auto;
+  }
+  .showGameContent {
+    height: 530px;
+  }
+  .nameNumberDateBox {
+    row-gap: 5px;
   }
   /* End of Header section  */
 
@@ -706,7 +793,9 @@ form {
 
 @media (max-width: 576px) {
   /* Header section  */
-
+  .showGameContent {
+    height: 570px;
+  }
   /* End of Header section  */
 
   /* Footer Section */
@@ -720,4 +809,36 @@ form {
     row-gap: 10px;
   }
   /* End of Footer Section */
+}
+
+@media (max-width: 480px) {
+  /* Header section  */
+  .showGameContent {
+    height: 800px;
+  }
+  .nameNumberDateBox {
+    row-gap: 0;
+  }
+  .drawnDozens span,
+  .orderOfDrawnNumbers span,
+  .drawLocation span {
+    display: flex;
+    flex-direction: column;
+  }
+  .nextValueBox {
+    flex-direction: column;
+    justify-content: start;
+    padding: 0;
+  }
+  .nextValueBox p {
+    width: 100%;
+    padding: 0 5px;
+  }
+  .nextValueBox p:not(:last-child) {
+    border-bottom: 1px solid;
+  }
+  th {
+    font-size: 14px;
+  }
+  /* End of Header section  */
 }
