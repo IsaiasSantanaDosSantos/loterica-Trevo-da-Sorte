@@ -219,7 +219,7 @@ body {
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: var(--gray_color);
+  color: var(--white_color);
 }
 .headerImgBox {
   width: 38%;
@@ -762,7 +762,7 @@ form {
   position: relative;
   z-index: 102;
   color: var(--white_color);
-  background-color: var(--primary_color);
+  background-color: var(--secundary_color);
   font-size: 15px;
   font-weight: bold;
   padding: 10px 20px;
