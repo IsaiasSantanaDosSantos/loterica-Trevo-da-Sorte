@@ -643,6 +643,9 @@ form {
   .listBtnBox {
     display: flex;
   }
+  .navMenu li a {
+    color: var(--white_color);
+  }
   /* End of Nav section  */
 
   /* Header section  */
