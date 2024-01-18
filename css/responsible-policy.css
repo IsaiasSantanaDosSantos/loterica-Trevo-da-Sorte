@@ -3,12 +3,14 @@
 
 /* Global variables */
 :root {
-  --primary_color: #038c33;
-  --secundary_color: #f2b705;
+  /* --primary_color: #038c33; */
+  /* --secundary_color: #f2b705; */
+  --primary_color: #f2b705;
+  --secundary_color: #038c33;
   --black_color: #000;
   --white_color: #fff;
-  --gray_color: #7f7171;
-  --blue_color: #0367a6;
+  --gray_color: #555555;
+  --blue_color: #5f90ff;
   --red_color: #bf5656;
   --megaSena_color: #6fbf36;
   --lotofacil_color: #f06292;
@@ -100,7 +102,7 @@ body {
   column-gap: 20px;
 }
 .navMenu li a {
-  color: var(--gray_color);
+  color: var(--black_color);
   text-decoration: none;
   font-weight: bold;
 }
@@ -110,6 +112,7 @@ body {
 }
 .actived {
   color: var(--secundary_color) !important;
+  border-bottom: 1px solid !important;
 }
 .listBtnBox {
   width: 35px;
@@ -320,7 +323,7 @@ li {
 .footerTitles {
   font-size: 18px;
   font-weight: 600;
-  color: var(--secundary_color);
+  color: var(--white_color);
   margin-bottom: 15px;
 }
 .footerNormalText {
@@ -388,101 +391,14 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--gray_color);
+  color: var(--white_color);
+  font-weight: 100;
 }
 .developerText a {
   color: var(--secundary_color);
 }
 
 /* End of Footer Section */
-
-/* Success Window */
-.successWindow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #00000037;
-  z-index: 99;
-  color: var(--gray_color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.successContainer {
-  width: auto;
-  max-width: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background-color: var(--white_color);
-  padding: 40px 30px;
-  border-radius: 5px;
-}
-.windowClosed {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  border: 1px solid var(--gray_color);
-  border-radius: 50%;
-  padding: 3px 6px;
-  background-color: var(--white_color);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.windowClosed:hover {
-  transform: scale(1.05);
-}
-.windowClosed:active {
-  filter: brightness(75%);
-}
-.successContent {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.successTitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  text-align: center;
-}
-.sucessText {
-  font-size: 16px;
-  line-height: 25px;
-}
-.successWindowImg {
-  width: 80px;
-  margin-top: 10px;
-}
-.addAnimation {
-  animation: showAnimation 0.8s forwards;
-}
-.removeAnimation {
-  animation: hideAnimation 0.8s forwards;
-}
-
-@keyframes showSuccessWindowAnimation {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-@keyframes hideSuccessWindowAnimation {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(0);
-  }
-}
-/* End of Success Window */
 
 /* Media Query */
 @media (max-width: 1200px) {
