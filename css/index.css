@@ -291,6 +291,52 @@ body {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 10px;
+}
+.accumulatNextCompetitionBox {
+  width: 490px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+}
+.isAccumulated {
+  font-size: 20px;
+  font-weight: lighter;
+  text-align: center;
+  animation: zoomAnimation 2s linear infinite;
+}
+.isAccumulated span {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  animation: zoomColorAnimation 2s linear infinite;
+}
+@keyframes zoomAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoomColorAnimation {
+  0% {
+    font-weight: lighter;
+  }
+  50% {
+    font-weight: bold;
+  }
+  100% {
+    font-weight: lighter;
+  }
+}
+.nextCompetition {
+  text-align: center;
 }
 .balloonsCardsBox {
   width: 100%;
@@ -303,7 +349,7 @@ body {
 }
 .balloonsCard {
   width: 23%;
-  min-width: 165px;
+  /* min-width: 165px; */
   max-width: 243px;
   height: auto;
   padding: 20px 0;
@@ -907,6 +953,11 @@ form {
   .ourBalloonsTitle {
     font-size: 30px;
   }
+  .accumulatNextCompetitionBox {
+    flex-direction: column;
+    width: 100%;
+    row-gap: 5px;
+  }
   /* End of Our Balloons section */
 
   /* Footer Section */
@@ -918,14 +969,31 @@ form {
 }
 @media (max-width: 400px) {
   /* Our Balloons section */
+  .balloonsCard {
+    width: 45%;
+  }
   .balloonsTitle {
     font-size: 30px;
   }
   .balloonsSubtitle {
     font-size: 16px;
   }
+  .typeGame {
+    font-size: 16px;
+  }
+  /* End of Our Balloons section */
+}
+@media (max-width: 300px) {
+  /* Our Balloons section */
   .balloonsCard {
-    width: 90%;
+    width: 45%;
+  }
+  /* End of Our Balloons section */
+}
+@media (max-width: 220px) {
+  /* Our Balloons section */
+  .balloonsCard {
+    width: 100%;
   }
   /* End of Our Balloons section */
 }

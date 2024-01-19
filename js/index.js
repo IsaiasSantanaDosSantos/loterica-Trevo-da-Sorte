@@ -93,6 +93,69 @@ function mobileMenuEvents() {
 }
 
 // Create balloons cards
+function accentsRemover(str) {
+  return str
+    .replace("+", "mais")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s/g, "")
+    .replace(/[^\w\s]/gi, "");
+}
+function formatoMoedaBrasileira(str) {
+  const formatoMoedaBrasileira = str.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  return formatoMoedaBrasileira;
+}
+
+function searchNextCompetitionAndIfAccumulated(game) {
+  try {
+    const gameList = localStorage.getItem("game_list");
+    const headerGameList = document.querySelectorAll(".balloonsTitleBox");
+    const titleBoxList = document.querySelectorAll(".balloonsTitle");
+    const urlSearched = "https://loteriascaixa-api.herokuapp.com/api/";
+    fetch(`${urlSearched}${game.replace("bolao", "")}/latest`)
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        if (gameList) {
+          const dataGameList = JSON.parse(gameList);
+          for (let d = 0; d < dataGameList.dataBalloons.length; d++) {
+            let listGameName = accentsRemover(
+              titleBoxList[d].textContent
+            ).toLowerCase();
+            if (json.loteria === listGameName) {
+              const div = document.createElement("div");
+              if (titleBoxList[d].textContent === "TIMEMANIA")
+                div.style.color = "#555555";
+              div.classList.add("accumulatNextCompetitionBox");
+              headerGameList[d].appendChild(div);
+              const isAccumulated = document.createElement("p");
+              isAccumulated.classList.add("isAccumulated");
+              let value = formatoMoedaBrasileira(
+                json.valorAcumuladoProximoConcurso
+              );
+              isAccumulated.innerHTML = `${
+                json.acumulou ? `Acumulado: <span>${value}</span> ` : ""
+              }`;
+              const nextCompetition = document.createElement("p");
+              nextCompetition.classList.add("nextCompetition");
+              nextCompetition.innerText = `Próximo sorteio: ${json.dataProximoConcurso}`;
+              div.appendChild(isAccumulated);
+              div.appendChild(nextCompetition);
+            }
+          }
+        } else {
+          console.log("Nenhum dado encontrado no localStorage");
+        }
+      });
+  } catch (error) {
+    console.warn(error);
+  }
+}
 function createDuplaSenaCards(data) {
   try {
     const balloonCardsBox = document.querySelector('[data-cards="dupla-sena"]');
@@ -127,6 +190,9 @@ function createDuplaSenaCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
@@ -166,6 +232,9 @@ function createTimemaniaCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
@@ -205,6 +274,9 @@ function createMilionarioCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
@@ -244,6 +316,9 @@ function createDiaSorteCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
@@ -283,6 +358,9 @@ function createQuinaCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
@@ -322,6 +400,9 @@ function createLotofacilCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
@@ -361,10 +442,14 @@ function createMegaSenaCards(data) {
       cardBox.appendChild(elementClicked);
       balloonCardsBox.appendChild(cardBox);
     }
+    searchNextCompetitionAndIfAccumulated(
+      accentsRemover(data.type).toLowerCase()
+    );
   } catch (error) {
     console.warn(error);
   }
 }
+
 function callSpecificFunctions(data) {
   try {
     const dataSize = data.dataBalloons.length;
@@ -399,7 +484,7 @@ function fetchCardsInfo() {
       .then((response) => response.json())
       .then((data) => {
         callSpecificFunctions(data);
-        // console.log(data);
+        localStorage.setItem("game_list", JSON.stringify(data));
       });
   } catch (error) {
     console.warn(error);

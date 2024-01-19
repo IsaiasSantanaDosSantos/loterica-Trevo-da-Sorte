@@ -98,6 +98,16 @@ function mobileMenuEvents() {
   }
 }
 // Create elements
+function formatoMoedaBrasileira(str) {
+  const formatoMoedaBrasileira = str.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  return formatoMoedaBrasileira;
+}
+
 async function createGameElement() {
   const gameList = [
     "Mega-Sena",
@@ -190,6 +200,19 @@ async function fetchGameResult(id, index, name) {
 // Get games results
 function criarConteudoHtml(json, name) {
   try {
+    const valueAccumuletdEspComp = formatoMoedaBrasileira(
+      json.valorAcumuladoConcursoEspecial
+    );
+    const valueAccumuletComp_0_5 = formatoMoedaBrasileira(
+      json.valorAcumuladoConcurso_0_5
+    );
+    const valueAccumuletNextComp = formatoMoedaBrasileira(
+      json.valorAcumuladoProximoConcurso
+    );
+    const collectedAmount = formatoMoedaBrasileira(json.valorArrecadado);
+    const estimatedValue = formatoMoedaBrasileira(
+      json.valorEstimadoProximoConcurso
+    );
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("contentContainer");
     contentContainer.innerHTML = `
@@ -237,26 +260,20 @@ function criarConteudoHtml(json, name) {
 
     <div class="nextValueBox">
       <p class="specialAccumulatedValue">
-        Valor especial acumulado: <span>${
-          json.valorAcumuladoConcursoEspecial
-        }</span>
+        Valor especial acumulado: <span>${valueAccumuletdEspComp}</span>
       </p>
       <p class="accumulatedContestValue">
-        Valor acumulado no concurso: <span>${
-          json.valorAcumuladoConcurso_0_5
-        }</span>
+        Valor acumulado no concurso: <span>${valueAccumuletComp_0_5}</span>
       </p>
       <p class="accumulatedValueNextCompetition">
-        Valor acumulado próx. concurso: <span>${
-          json.valorAcumuladoProximoConcurso
-        }</span>
+        Valor acumulado próx. concurso: <span>${valueAccumuletNextComp}</span>
       </p>
       <p class="valueRaised">
-        Valor arrecadado: <span>${json.valorArrecadado}</span>
+        Valor arrecadado: <span>${collectedAmount}</span>
       </p>
       <p class="estimatedValueNextCompetition">
         Valor estimado proximo concurso:
-        <span>${json.valorEstimadoProximoConcurso}</span>
+        <span>${estimatedValue}</span>
       </p>
       
       
@@ -277,13 +294,14 @@ function createAwardsInfo(json) {
     let jsonfile = json.premiacoes;
     for (let e = 0; e < nextInformation.length; e++) {
       for (let i = 0; i < jsonfile.length; i++) {
+        const prizeValue = formatoMoedaBrasileira(jsonfile[i].valorPremio);
         if (e === i) {
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td  class="leftLine firstColor">${jsonfile[i].descricao}</td>
             <td class="centerLine secundColor">${jsonfile[i].faixa}</td>
             <td  class="centerLine firstColor">${jsonfile[i].ganhadores}</td>
-            <td  class="centerLine secundColor">${jsonfile[i].valorPremio}</td>
+            <td  class="centerLine secundColor">${prizeValue}</td>
           `;
           nextInformation[e].appendChild(tr);
         }
