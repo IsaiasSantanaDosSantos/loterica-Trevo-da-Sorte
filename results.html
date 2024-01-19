@@ -122,6 +122,43 @@
     <header class="headerSection">
       <div class="headerContainer">
         <h1 class="headerTitle">Resultados</h1>
+        <div class="searchInputBtnBox">
+          <div class="searchBox">
+            <div class="searchSelectInputBox">
+              <label for="searchName" class="labelSearchInput"
+                >Jogo:
+                <select name="game" id="searchName" class="selectSearchName">
+                  <option value="default" disabled selected hidden>
+                    Selecione o jogo
+                  </option>
+                </select>
+              </label>
+              <label
+                for="inputGameNumber"
+                class="labelSearchInput"
+                id="gameNumber"
+                >Concurso:
+                <input
+                  type="text"
+                  class="inputSearchGameNumber required"
+                  id="inputGameNumber"
+                  autocomplete="off"
+                  placeholder="Número do concurso..."
+                />
+              </label>
+            </div>
+            <button
+              type="button"
+              class="searchGameBtn"
+              id="searchGameBtn"
+              arial-label="Ver resultado"
+            >
+              Ver resultado
+            </button>
+          </div>
+          <span class="searchErrorMsg"></span>
+        </div>
+        <h2 class="lastResult">Últimos sorteios</h2>
         <div class="headerResultsBox"></div>
       </div>
     </header>

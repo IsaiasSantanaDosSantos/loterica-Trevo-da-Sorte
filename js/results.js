@@ -97,7 +97,98 @@ function mobileMenuEvents() {
     }
   }
 }
+
+function getLocalStorageDataAndRemoveBolao() {
+  const localStorageList = localStorage.getItem("game_list");
+  const gameList = JSON.parse(localStorageList);
+  const gameNames = gameList.dataBalloons;
+  const typeGame = [];
+  for (let i = 0; i < gameNames.length; i++) {
+    typeGame.push(gameNames[i].type);
+  }
+  const gameNameList = typeGame.map((item) => item.replace("Bolão ", ""));
+  return gameNameList;
+}
+
+function accentsRemover(str) {
+  return str
+    .replace("+", "mais")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s/g, "")
+    .replace(/[^\w\s]/gi, "");
+}
+
+//Searh game result
+document.querySelector("#inputGameNumber").addEventListener("focus", () => {
+  document.querySelector(".searchErrorMsg").textContent = "";
+});
+document.querySelector("#searchName").addEventListener("focus", () => {
+  document.querySelector(".searchErrorMsg").textContent = "";
+});
+
+function createOptionGame() {
+  const gameList = getLocalStorageDataAndRemoveBolao();
+  const select = document.querySelector("#searchName");
+  for (let i = 0; i < gameList.length; i++) {
+    const option = document.createElement("option");
+    option.value = accentsRemover(gameList[i]).toLowerCase();
+    option.textContent = gameList[i];
+    select.appendChild(option);
+  }
+  console.log(gameList);
+}
+
+function selectEvents() {
+  const searchInput = document.querySelector(".labelSearchInput:nth-child(2)");
+  const select = document.querySelector("#searchName");
+  const errorMsg = document.querySelector(".searchErrorMsg");
+  const input = document.querySelector("#inputGameNumber");
+  select.addEventListener("change", () => {
+    searchInput.style.display = "flex";
+    const selectedOptionValue = select.value;
+    errorMsg.textContent = "";
+    // const selectedOption = select.selectedOptions[0];
+    // const selectedOptionText = selectedOption.text;
+  });
+}
+
+function fetchSearchField(select, input) {
+  document.querySelector(".searchErrorMsg").textContent = "";
+  console.log(select);
+  console.log(input);
+
+  /*
+  
+  AQUI FAREI A BUSCA PELO CONCURSO DESEJADO, E TALVEZ CRIO UMA OUTRA FUNÇÃO PARA CRIAR O HTML DO RESULTADO.
+  
+  */
+}
+
+document.querySelector("#searchGameBtn").addEventListener("click", () => {
+  const select = document.querySelector("#searchName");
+  const input = document.querySelector("#inputGameNumber");
+  const errorMsg = document.querySelector(".searchErrorMsg");
+  const selectedOptionValue = select.value;
+  const regex = /^\d+$/;
+
+  if (selectedOptionValue === "default") {
+    errorMsg.textContent = "Selecione o jogo desejado!";
+    return;
+  }
+  if (input.value === "") {
+    errorMsg.textContent = "Adicione o número do concurso!";
+    return;
+  }
+  if (!regex.test(input.value)) {
+    errorMsg.textContent = "O número do concurso deve conter apenas números!";
+    return;
+  }
+  fetchSearchField(selectedOptionValue, input.value);
+});
+
 // Create elements
+function fetchAllGames() {}
 function formatoMoedaBrasileira(str) {
   const formatoMoedaBrasileira = str.toLocaleString("pt-BR", {
     style: "currency",
@@ -109,24 +200,7 @@ function formatoMoedaBrasileira(str) {
 }
 
 async function createGameElement() {
-  const gameList = [
-    "Mega-Sena",
-    "Lotofácil",
-    "Quina",
-    "Dia de Sorte",
-    "+Milionária",
-    "Timemania",
-    "Dupla-Sena",
-  ];
-
-  function accentsRemover(str) {
-    return str
-      .replace("+", "mais")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s/g, "")
-      .replace(/[^\w\s]/gi, "");
-  }
+  const gameList = getLocalStorageDataAndRemoveBolao();
 
   for (let i = 0; i < gameList.length; i++) {
     const headerResultsBox = document.querySelector(".headerResultsBox");
@@ -288,6 +362,7 @@ function criarConteudoHtml(json, name) {
     console.warn(error);
   }
 }
+
 function createAwardsInfo(json) {
   try {
     const nextInformation = document.querySelectorAll("tbody");
@@ -316,3 +391,6 @@ changeNavBarColor();
 mobileMenuEvents();
 getCurretYear();
 createGameElement();
+fetchAllGames();
+createOptionGame();
+selectEvents();
