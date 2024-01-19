@@ -294,7 +294,7 @@ body {
   margin-bottom: 10px;
 }
 .accumulatNextCompetitionBox {
-  width: 490px;
+  width: auto;
   margin: auto;
   display: flex;
   justify-content: space-between;
