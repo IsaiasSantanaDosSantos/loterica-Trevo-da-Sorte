@@ -1,3 +1,5 @@
+let count = 0;
+
 function getTopDistanceFromNavBar() {
   const navHeight = 40;
   return navHeight;
@@ -136,7 +138,7 @@ function createOptionGame() {
     option.textContent = gameList[i];
     select.appendChild(option);
   }
-  console.log(gameList);
+  // console.log(gameList);
 }
 
 function selectEvents() {
@@ -153,16 +155,36 @@ function selectEvents() {
   });
 }
 
-function fetchSearchField(select, input) {
-  document.querySelector(".searchErrorMsg").textContent = "";
-  console.log(select);
-  console.log(input);
+function fetchSearchField(select, input, name) {
+  try {
+    const origin = "fetchSearchField function";
+    document.querySelector(".searchBox").style.display = "none";
+    document.querySelector(".closedResultBtn").style.display = "flex";
+    document.querySelector(".searchErrorMsg").textContent = "";
+    document.querySelector("#inputGameNumber").value = "";
+    document.querySelector("#searchName").selectedIndex = 0;
+    [...document.querySelectorAll(".gameInfoContent")].forEach((e) =>
+      e.classList.remove("showGameContent")
+    );
+    const gameBox = document.querySelector(".searchInputBtnBox");
+    const searchContent = document.createElement("div");
+    searchContent.classList.add("searchContent");
+    gameBox.appendChild(searchContent);
+    const title = document.createElement("h2");
+    title.innerHTML = `<h2 class="searchedTitle">${name}</h2>`;
+    searchContent.appendChild(title);
 
-  /*
-  
-  AQUI FAREI A BUSCA PELO CONCURSO DESEJADO, E TALVEZ CRIO UMA OUTRA FUNÇÃO PARA CRIAR O HTML DO RESULTADO.
-  
-  */
+    fetch(`https://loteriascaixa-api.herokuapp.com/api/${select}/${input}`)
+      .then((resposta) => resposta.json())
+      .then((json) => {
+        let resultSearched = criarConteudoHtml(json, name);
+        searchContent.innerHTML += resultSearched;
+        console.log(json);
+        createAwardsInfo(json, origin);
+      });
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 document.querySelector("#searchGameBtn").addEventListener("click", () => {
@@ -170,6 +192,8 @@ document.querySelector("#searchGameBtn").addEventListener("click", () => {
   const input = document.querySelector("#inputGameNumber");
   const errorMsg = document.querySelector(".searchErrorMsg");
   const selectedOptionValue = select.value;
+  const selectedOption = select.selectedOptions[0];
+  const selectedOptionText = selectedOption.text;
   const regex = /^\d+$/;
 
   if (selectedOptionValue === "default") {
@@ -181,14 +205,19 @@ document.querySelector("#searchGameBtn").addEventListener("click", () => {
     return;
   }
   if (!regex.test(input.value)) {
-    errorMsg.textContent = "O número do concurso deve conter apenas números!";
+    errorMsg.textContent = "Este campo deve conter apenas números!";
     return;
   }
-  fetchSearchField(selectedOptionValue, input.value);
+  fetchSearchField(selectedOptionValue, input.value, selectedOptionText);
 });
-
+document.querySelector(".closedResultBtn").addEventListener("click", () => {
+  document.querySelector(".searchBox").style.display = "flex";
+  document.querySelector(".closedResultBtn").style.display = "none";
+  document.querySelector(".searchContent").remove();
+});
 // Create elements
-function fetchAllGames() {}
+// function fetchAllGames() {}
+
 function formatoMoedaBrasileira(str) {
   const formatoMoedaBrasileira = str.toLocaleString("pt-BR", {
     style: "currency",
@@ -212,7 +241,7 @@ async function createGameElement() {
     <div class="headerResultGame ${idElement}">
       <p class="headerGameName">${gameList[i]}</p>
       <span class="fa-solid fa-angle-down gameIcon"></span>
-      <div class="elementClicked" d="${idElement}" onclick="openGameInfo(event,id)"></div>
+      <div class="elementClicked" onclick="openGameInfo(event)"></div>
     </div>
     <div class="gameInfoContent"></div>
     `;
@@ -223,7 +252,7 @@ async function createGameElement() {
 }
 
 // Games events
-function openGameInfo(event, id) {
+function openGameInfo(event) {
   const elCkd = event.target;
   const elClickedList = document.querySelectorAll(".elementClicked");
   const gameContentList = document.querySelectorAll(".gameInfoContent");
@@ -257,6 +286,7 @@ function openGameInfo(event, id) {
 // Games fetch
 async function fetchGameResult(id, index, name) {
   try {
+    const origin = "fetchGameResult function";
     const urlSearched = "https://loteriascaixa-api.herokuapp.com/api/";
     const gameInfo = document.querySelectorAll(`.gameInfoContent`)[index];
 
@@ -264,15 +294,20 @@ async function fetchGameResult(id, index, name) {
       resposta.json()
     );
     const novoConteudo = criarConteudoHtml(json, name);
-    createAwardsInfo(json);
+    createAwardsInfo(json, origin);
     gameInfo.innerHTML = novoConteudo;
   } catch (error) {
     console.warn(error);
   }
 }
+function incrementIndex() {
+  count++;
+  return count;
+}
 
-// Get games results
+// Get games results .d =
 function criarConteudoHtml(json, name) {
+  // console.log(json);
   try {
     const valueAccumuletdEspComp = formatoMoedaBrasileira(
       json.valorAcumuladoConcursoEspecial
@@ -287,8 +322,12 @@ function criarConteudoHtml(json, name) {
     const estimatedValue = formatoMoedaBrasileira(
       json.valorEstimadoProximoConcurso
     );
+
+    const index = incrementIndex();
+
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("contentContainer");
+
     contentContainer.innerHTML = `
     <div class="lineContent">
       <div class="nameNumberDateBox">
@@ -317,6 +356,9 @@ function criarConteudoHtml(json, name) {
         </p>
       </div>
       <div class="nextInformation">
+      <button type="button" class="awardsBtn" data-index="${index}" name="${
+      json.loteria
+    }" aria-labal="Ver premiação" onclick="createTableContent(name, ${index})" >Ver premiação</button>
         <p class="awards">Premiações:</p>
         <table>
           <thead>
@@ -327,7 +369,7 @@ function criarConteudoHtml(json, name) {
               <th><b>Valor do prêmio</b></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody data-name="${json.loteria}"></tbody>
         </table>
       </div>
     </div>
@@ -363,34 +405,88 @@ function criarConteudoHtml(json, name) {
   }
 }
 
-function createAwardsInfo(json) {
+function createAwardsInfo(json, origin) {
   try {
-    const nextInformation = document.querySelectorAll("tbody");
+    // console.log(json);
     let jsonfile = json.premiacoes;
-    for (let e = 0; e < nextInformation.length; e++) {
+    // console.log(json.premiacoes);
+    if (origin === "fetchGameResult function") {
+      // console.log("nextInformation: ", nextInformation);
+      // // for (let e = 0; e < nextInformation.length; e++) {:
+      // nextInformation.forEach((e, idx) => {
+      //   if (nextInformation[idx] === jsonfile[idx]) {
+      //     for (let i = 0; i < jsonfile.length; i++) {
+      //       const prizeValue = formatoMoedaBrasileira(jsonfile[e].valorPremio);
+      //       const tr = document.createElement("tr");
+      //       tr.innerHTML = `
+      //           <td  class="leftLine firstColor">${jsonfile[e].descricao}</td>
+      //           <td class="centerLine secundColor">${jsonfile[e].faixa}</td>
+      //           <td  class="centerLine firstColor">${jsonfile[e].ganhadores}</td>
+      //           <td  class="centerLine secundColor">${prizeValue}</td>
+      //         `;
+      //       e.appendChild(tr);
+      //       // }
+      //     }
+      //   }
+      // });
+      // }
+    } else if (origin === "fetchSearchField function") {
+      console.log("jsonfile: ", jsonfile.length);
+      console.log("nextInformation: ", nextInformation.length);
+      const nextInformation = document.querySelector(".searchContent tbody");
       for (let i = 0; i < jsonfile.length; i++) {
         const prizeValue = formatoMoedaBrasileira(jsonfile[i].valorPremio);
-        if (e === i) {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
             <td  class="leftLine firstColor">${jsonfile[i].descricao}</td>
             <td class="centerLine secundColor">${jsonfile[i].faixa}</td>
             <td  class="centerLine firstColor">${jsonfile[i].ganhadores}</td>
             <td  class="centerLine secundColor">${prizeValue}</td>
           `;
-          nextInformation[e].appendChild(tr);
-        }
+        nextInformation.appendChild(tr);
       }
+    } else {
+      console.warn("Arquivo não encontrado!");
     }
   } catch (error) {
     console.warn(error);
   }
 }
+function createTableContent(name, index) {
+  try {
+    const awardsBtnList = [...document.querySelectorAll(".awardsBtn")];
+    const tbodyList = [...document.querySelectorAll("tbody")];
+
+    fetch(`https://loteriascaixa-api.herokuapp.com/api/${name}/latest`)
+      .then((resposta) => resposta.json())
+      .then((json) => {
+        const premiacoes = json.premiacoes;
+        if (tbodyList[index - 1]) {
+          for (let i = 0; i < premiacoes.length; i++) {
+            const prizeValue = formatoMoedaBrasileira(
+              premiacoes[i].valorPremio
+            );
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td  class="leftLine firstColor">${premiacoes[i].descricao}</td>
+                <td class="centerLine secundColor">${premiacoes[i].faixa}</td>
+                <td  class="centerLine firstColor">${premiacoes[i].ganhadores}</td>
+                <td  class="centerLine secundColor">${prizeValue}</td>
+              `;
+            tbodyList[index - 1].appendChild(tr);
+          }
+        }
+      });
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
 // Functions called
 changeNavBarColor();
 mobileMenuEvents();
 getCurretYear();
 createGameElement();
-fetchAllGames();
+// fetchAllGames();
 createOptionGame();
 selectEvents();

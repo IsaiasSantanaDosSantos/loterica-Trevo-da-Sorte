@@ -207,7 +207,7 @@ body {
 
 /*  */
 .searchInputBtnBox {
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -280,10 +280,26 @@ body {
   transition: all 0.4s;
   white-space: nowrap;
 }
-.searchGameBtn:hover {
+.closedResultBtn {
+  padding: 7px 15px;
+  height: 30px;
+  color: var(--white_color);
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: var(--secundary_color);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s;
+  white-space: nowrap;
+  display: none;
+}
+.searchGameBtn:hover,
+.closedResultBtn:hover {
   transform: scale(1.05);
 }
-.searchGameBtn:active {
+.searchGameBtn:active,
+.closedResultBtn:active {
   filter: brightness(75%);
 }
 .lastResult {
@@ -316,6 +332,9 @@ body {
   border-radius: 5px;
   margin-bottom: 20px;
   color: var(--black_color);
+}
+.searchedTitle {
+  margin-bottom: 15px;
 }
 .eachResultsBox:nth-child(1) {
   background-color: var(--megaSena_color);
@@ -378,10 +397,32 @@ body {
   transition: all 0.5s;
   overflow: hidden;
 }
+.searchContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  overflow: hidden;
+  height: auto;
+  margin-top: 20px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+}
 .showGameContent {
   height: 385px;
   padding-bottom: 15px;
 }
+/* .heightAuto {
+  height: auto;
+  margin-top: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+} */
 .lineContent {
   width: 100%;
   display: flex;

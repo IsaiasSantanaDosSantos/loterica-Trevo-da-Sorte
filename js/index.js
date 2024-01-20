@@ -120,7 +120,7 @@ function searchNextCompetitionAndIfAccumulated(game) {
     fetch(`${urlSearched}${game.replace("bolao", "")}/latest`)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+        // console.log(json);
         if (gameList) {
           const dataGameList = JSON.parse(gameList);
           for (let d = 0; d < dataGameList.dataBalloons.length; d++) {
