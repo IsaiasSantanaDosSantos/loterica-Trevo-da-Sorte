@@ -1,3 +1,8 @@
+function isEmailValid(email) {
+  const regexEmail = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/;
+  return regexEmail.test(email);
+}
+
 function getTopDistanceFromNavBar() {
   const navHeight = 40;
   return navHeight;
@@ -99,6 +104,12 @@ function mobileMenuEvents() {
 }
 
 function handleFormSubmit() {
+  const headerBtn = document.querySelector(".headerBtn");
+  const loadGift = document.createElement("img");
+  loadGift.setAttribute("src", "/img/gift/loader_16x16.gif");
+  loadGift.classList.add("loadGift");
+  headerBtn.append(loadGift);
+
   const formContact = event.target;
   const formData = new FormData(formContact);
 
@@ -106,11 +117,13 @@ function handleFormSubmit() {
     const successWindow = document.querySelector(".successWindow");
     const windowClosed = document.querySelector(".windowClosed");
     const contentWindow = document.querySelector(".successContainer");
+
     document.querySelector("#name").value = "";
     document.querySelector("#telefone").value = "";
     document.querySelector("#mensagem").value = "";
 
     function closedWindow() {
+      document.querySelector(".loadGift").remove();
       contentWindow.classList.remove("addAnimation");
       contentWindow.classList.add("removeAnimation");
       setTimeout(() => {
@@ -287,6 +300,62 @@ function handleVerification(event) {
 //     title: "Seu Marcador",
 //   });
 // }
+
+function handleFooterForm(e) {
+  e.preventDefault();
+  const errorMsg = document.querySelector(".errorMsg");
+  errorMsg.innerHTML = "";
+  const footerFormEmail = document.querySelector("#footerFormEmail");
+  const footerBtn = document.querySelector(".formBtn");
+  const loadGift = document.createElement("img");
+  loadGift.setAttribute("src", "/img/gift/loader_16x16.gif");
+  loadGift.classList.add("loadGift");
+  footerBtn.append(loadGift);
+
+  if (!isEmailValid(footerFormEmail.value)) {
+    errorMsg.innerHTML = "E-mail inválido!";
+    document.querySelector(".loadGift").remove();
+    return;
+  }
+
+  const formContact = event.target;
+  const formData = new FormData(formContact);
+
+  fetch(formContact.action, {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      if (response.ok) {
+        // A resposta do servidor foi bem-sucedida (status 2xx)
+        // Faça aqui as ações desejadas após o envio bem-sucedido
+        footerFormEmail.value = "";
+        console.log("E-mail cadastrado com sucesso!");
+        errorMsg.innerHTML =
+          "<span class='successMsg'>E-mail cadastrado com sucesso!</span>'";
+        setTimeout(() => {
+          document.querySelector(".successMsg").remove();
+        }, 3000);
+      } else {
+        // A resposta do servidor não foi bem-sucedida
+        // Trate a resposta de erro aqui, se necessário
+        console.error(
+          "Erro durante o envio do formulário:",
+          response.statusText
+        );
+      }
+    })
+    .catch((error) => {
+      console.error("Erro durante a requisição fetch:", error);
+    })
+    .finally(() => {
+      // Independentemente do resultado, remova o gif de carregamento
+      document.querySelector(".loadGift").remove();
+    });
+}
+document
+  .querySelector(".footerForm")
+  .addEventListener("submit", handleFooterForm);
 
 document
   .querySelector(".headerForm")

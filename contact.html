@@ -145,7 +145,7 @@
                   type="hidden"
                   id="_autoresponse"
                   name="_autoresponse"
-                  value="Seu e-mail foi cadastrado com sucesso para receber nossa newslatter. Obrigado!"
+                  value="Seu e-mail foi enviado com sucesso. Obrigado!"
                 />
               </label>
               <div class="groupForm">
@@ -351,10 +351,11 @@
             <div class="footerNewsletterBox">
               <p class="footerTitles">Subscrição de newsletter</p>
               <form
+                class="footerForm"
                 action="https://formsubmit.co/isaias.drmeducacao@gmail.com"
-                method="POST"
               >
-                <input type="hidden" name="_next" value="/success.html" />
+                <!-- method="POST" -->
+                <!-- <input type="hidden" name="_next" value="/success.html" /> -->
                 <input type="hidden" name="_captcha" value="false" /><input
                   type="hidden"
                   name="_autoresponse"
@@ -363,12 +364,12 @@
                 <label for="email" class="formLabel"
                   >Seu e-mail
                   <input
-                    type="email"
+                    id="footerFormEmail"
+                    type="text"
                     name="email"
                     class="inputEmail form-control"
                     autocomplete="off"
                     placeholder="Digite seu e-mail..."
-                    required
                   />
                 </label>
 

@@ -261,6 +261,10 @@ body {
   cursor: pointer;
   transition: all 0.4s;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
 }
 .headerBtn:hover {
   transform: scale(1.03);
@@ -449,6 +453,10 @@ form {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
 }
 .formBtn:hover {
   transform: scale(1.03);
@@ -476,6 +484,11 @@ form {
 .errorMsg {
   font-size: 13px;
   color: var(--red_color);
+}
+.successMsg {
+  font-size: 16px;
+  color: var(--secundary_color);
+  font-weight: bold;
 }
 .successSendMessageWindow {
   position: absolute;
