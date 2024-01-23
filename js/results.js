@@ -171,16 +171,24 @@ function fetchSearchField(select, input, name) {
     searchContent.classList.add("searchContent");
     gameBox.appendChild(searchContent);
     const title = document.createElement("h2");
-    title.innerHTML = `<h2 class="searchedTitle">${name}</h2>`;
+    title.classList.add("searchedTitle");
+    title.innerHTML = name;
     searchContent.appendChild(title);
-
+    const loadGift = document.createElement("img");
+    loadGift.classList.add("loadGift");
+    loadGift.setAttribute("src", "/img/gift/loader_16x16.gif");
+    searchContent.appendChild(loadGift);
     fetch(`https://loteriascaixa-api.herokuapp.com/api/${select}/${input}`)
       .then((resposta) => resposta.json())
       .then((json) => {
         let resultSearched = criarConteudoHtml(json, name);
         searchContent.innerHTML += resultSearched;
-        console.log(json);
-        createAwardsInfo(json, origin);
+        selectCreateAwardsInfo(json, origin);
+        document.querySelector(".loadGift").remove();
+      })
+      .catch((erro) => {
+        searchContent.innerHTML = `<p class="errorSearchMsg">Concurso não encontrado!<br><span>Por favor, verifique o número digitado e tente novamente.</span></p>`;
+        return;
       });
   } catch (error) {
     console.warn(error);
@@ -205,7 +213,7 @@ document.querySelector("#searchGameBtn").addEventListener("click", () => {
     return;
   }
   if (!regex.test(input.value)) {
-    errorMsg.textContent = "Este campo deve conter apenas números!";
+    errorMsg.textContent = "O campo 'Concurso' deve conter apenas números!";
     return;
   }
   fetchSearchField(selectedOptionValue, input.value, selectedOptionText);
@@ -213,19 +221,24 @@ document.querySelector("#searchGameBtn").addEventListener("click", () => {
 document.querySelector(".closedResultBtn").addEventListener("click", () => {
   document.querySelector(".searchBox").style.display = "flex";
   document.querySelector(".closedResultBtn").style.display = "none";
-  document.querySelector(".searchContent").remove();
+  if (document.querySelector(".searchContent")) {
+    document.querySelector(".searchContent").remove();
+  }
 });
 // Create elements
-// function fetchAllGames() {}
 
 function formatoMoedaBrasileira(str) {
-  const formatoMoedaBrasileira = str.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-  return formatoMoedaBrasileira;
+  if (str !== undefined) {
+    let formatoMoedaBrasileira = str.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+    return formatoMoedaBrasileira;
+  } else {
+    return "Valor indisponível";
+  }
 }
 
 async function createGameElement() {
@@ -257,7 +270,10 @@ function openGameInfo(event) {
   const elClickedList = document.querySelectorAll(".elementClicked");
   const gameContentList = document.querySelectorAll(".gameInfoContent");
   const gameIconList = document.querySelectorAll(".gameIcon");
+  const btn = document.querySelector(".closedResultBtn");
+  [...document.querySelectorAll("tbody")].forEach((e) => (e.innerHTML = ""));
   let activeIdx = false;
+  if (btn) btn.click();
 
   for (let i = 0; i < elClickedList.length; i++) {
     if (elCkd === elClickedList[i]) {
@@ -271,6 +287,9 @@ function openGameInfo(event) {
         // console.log("Elemento clicado duas vezes: ", activeIdx);
       } else {
         // Caso contrário, adicione a classe
+        document
+          .querySelectorAll(".awardsBtn")
+          .forEach((e) => (e.style.display = "block"));
         contentElement.classList.add("showGameContent");
         gameIconList[i].classList.add("rotateIcon");
         activeIdx = true;
@@ -286,7 +305,8 @@ function openGameInfo(event) {
 // Games fetch
 async function fetchGameResult(id, index, name) {
   try {
-    const origin = "fetchGameResult function";
+    // console.log(id, index, name);
+    // const origin = "fetchGameResult function";
     const urlSearched = "https://loteriascaixa-api.herokuapp.com/api/";
     const gameInfo = document.querySelectorAll(`.gameInfoContent`)[index];
 
@@ -294,7 +314,7 @@ async function fetchGameResult(id, index, name) {
       resposta.json()
     );
     const novoConteudo = criarConteudoHtml(json, name);
-    createAwardsInfo(json, origin);
+    // createAwardsInfo(json, origin);
     gameInfo.innerHTML = novoConteudo;
   } catch (error) {
     console.warn(error);
@@ -355,10 +375,10 @@ function criarConteudoHtml(json, name) {
           Local do sorteio: <span>${json.local}</span>
         </p>
       </div>
-      <div class="nextInformation">
       <button type="button" class="awardsBtn" data-index="${index}" name="${
       json.loteria
     }" aria-labal="Ver premiação" onclick="createTableContent(name, ${index})" >Ver premiação</button>
+      <div class="nextInformation">
         <p class="awards">Premiações:</p>
         <table>
           <thead>
@@ -398,65 +418,59 @@ function criarConteudoHtml(json, name) {
     
     </script>
     `;
-
     return contentContainer.outerHTML;
   } catch (error) {
     console.warn(error);
   }
 }
 
-function createAwardsInfo(json, origin) {
+function selectCreateAwardsInfo(json, origin) {
   try {
-    // console.log(json);
+    if (document.querySelector(".searchContent button"))
+      document.querySelector(".searchContent button").remove();
+    document.querySelector(".searchContent .nextInformation").style.display =
+      "flex";
     let jsonfile = json.premiacoes;
-    // console.log(json.premiacoes);
-    if (origin === "fetchGameResult function") {
-      // console.log("nextInformation: ", nextInformation);
-      // // for (let e = 0; e < nextInformation.length; e++) {:
-      // nextInformation.forEach((e, idx) => {
-      //   if (nextInformation[idx] === jsonfile[idx]) {
-      //     for (let i = 0; i < jsonfile.length; i++) {
-      //       const prizeValue = formatoMoedaBrasileira(jsonfile[e].valorPremio);
-      //       const tr = document.createElement("tr");
-      //       tr.innerHTML = `
-      //           <td  class="leftLine firstColor">${jsonfile[e].descricao}</td>
-      //           <td class="centerLine secundColor">${jsonfile[e].faixa}</td>
-      //           <td  class="centerLine firstColor">${jsonfile[e].ganhadores}</td>
-      //           <td  class="centerLine secundColor">${prizeValue}</td>
-      //         `;
-      //       e.appendChild(tr);
-      //       // }
-      //     }
-      //   }
-      // });
-      // }
-    } else if (origin === "fetchSearchField function") {
-      console.log("jsonfile: ", jsonfile.length);
-      console.log("nextInformation: ", nextInformation.length);
-      const nextInformation = document.querySelector(".searchContent tbody");
-      for (let i = 0; i < jsonfile.length; i++) {
-        const prizeValue = formatoMoedaBrasileira(jsonfile[i].valorPremio);
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td  class="leftLine firstColor">${jsonfile[i].descricao}</td>
-            <td class="centerLine secundColor">${jsonfile[i].faixa}</td>
-            <td  class="centerLine firstColor">${jsonfile[i].ganhadores}</td>
-            <td  class="centerLine secundColor">${prizeValue}</td>
-          `;
-        nextInformation.appendChild(tr);
-      }
-    } else {
-      console.warn("Arquivo não encontrado!");
+    const nextInformation = document.querySelector(".searchContent tbody");
+    const btn = document.querySelector(".searchContent button");
+    if (btn) btn.setAttribute("data-index", "-1");
+    // if (json && json.resultados && json.resultados.length > 0) {
+    for (let i = 0; i < jsonfile.length; i++) {
+      const prizeValue = formatoMoedaBrasileira(jsonfile[i].valorPremio);
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+              <td  class="leftLine firstColor">${jsonfile[i].descricao}</td>
+              <td class="centerLine secundColor">${jsonfile[i].faixa}</td>
+              <td  class="centerLine firstColor">${jsonfile[i].ganhadores}</td>
+              <td  class="centerLine secundColor">${prizeValue}</td>
+            `;
+      nextInformation.appendChild(tr);
     }
+    // } else {
+    //   console.error("Dados do concurso indisponíveis ou inválidos");
+    //   document.querySelector(
+    //     ".searchContent"
+    //   ).innerHTML = `<p class="errorSearchMsg">Concurso não encontrado!<br> <span>Por favor, verifique o número digitado e tente novamente.</span> </p>`;
+    // }
   } catch (error) {
     console.warn(error);
   }
 }
 function createTableContent(name, index) {
   try {
+    const nextInformation = document.querySelectorAll(".nextInformation");
     const awardsBtnList = [...document.querySelectorAll(".awardsBtn")];
     const tbodyList = [...document.querySelectorAll("tbody")];
-
+    awardsBtnList.forEach((e, idx) => {
+      idx === index - 1
+        ? (e.style.display = "none")
+        : (e.style.display = "block");
+    });
+    nextInformation.forEach((e, idx) => {
+      idx === index - 1
+        ? (e.style.display = "flex")
+        : (e.style.display = "none");
+    });
     fetch(`https://loteriascaixa-api.herokuapp.com/api/${name}/latest`)
       .then((resposta) => resposta.json())
       .then((json) => {
@@ -487,6 +501,5 @@ changeNavBarColor();
 mobileMenuEvents();
 getCurretYear();
 createGameElement();
-// fetchAllGames();
 createOptionGame();
 selectEvents();

@@ -413,16 +413,17 @@ body {
   padding: 5px;
 }
 .showGameContent {
-  height: 385px;
+  height: auto;
   padding-bottom: 15px;
 }
-/* .heightAuto {
-  height: auto;
-  margin-top: 40px;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 5px;
-} */
+.errorSearchMsg {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+.errorSearchMsg span {
+  font-size: 18px;
+}
 .lineContent {
   width: 100%;
   display: flex;
@@ -445,11 +446,30 @@ body {
 }
 .nextInformation {
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 5px;
+}
+.awardsBtn {
+  padding: 5px 25px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  margin: 10px auto 0;
+  color: var(--black_color);
+  background-color: var(--white_color);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.awardsBtn:hover {
+  transform: scale(1.05);
+}
+.awardsBtn:active {
+  filter: brightness(75%);
 }
 .drawnDozensBox,
 .accumulatedDrawLocationBox {
@@ -819,9 +839,9 @@ form {
   .headerBtn {
     margin: auto;
   }
-  .showGameContent {
+  /* .showGameContent {
     height: 530px;
-  }
+  } */
   .nameNumberDateBox {
     row-gap: 5px;
   }
@@ -866,9 +886,9 @@ form {
   .selectSearchName {
     width: 210px;
   }
-  .showGameContent {
+  /* .showGameContent {
     height: 570px;
-  }
+  } */
   /* End of Header section  */
 
   /* Footer Section */
@@ -886,9 +906,9 @@ form {
 
 @media (max-width: 480px) {
   /* Header section  */
-  .showGameContent {
+  /* .showGameContent {
     height: 800px;
-  }
+  } */
   .nameNumberDateBox {
     row-gap: 0;
   }
