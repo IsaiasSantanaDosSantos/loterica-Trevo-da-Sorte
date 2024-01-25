@@ -218,6 +218,7 @@ document.querySelector("#searchGameBtn").addEventListener("click", () => {
   }
   fetchSearchField(selectedOptionValue, input.value, selectedOptionText);
 });
+
 document.querySelector(".closedResultBtn").addEventListener("click", () => {
   document.querySelector(".searchBox").style.display = "flex";
   document.querySelector(".closedResultBtn").style.display = "none";
@@ -271,6 +272,10 @@ function openGameInfo(event) {
   const gameContentList = document.querySelectorAll(".gameInfoContent");
   const gameIconList = document.querySelectorAll(".gameIcon");
   const btn = document.querySelector(".closedResultBtn");
+  document.querySelector(".labelSearchInput:nth-child(2)").style.display =
+    "none";
+  document.querySelector("#searchName").selectedIndex = 0;
+
   [...document.querySelectorAll("tbody")].forEach((e) => (e.innerHTML = ""));
   let activeIdx = false;
   if (btn) btn.click();
