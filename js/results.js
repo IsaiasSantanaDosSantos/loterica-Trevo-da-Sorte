@@ -129,6 +129,9 @@ document.querySelector("#searchName").addEventListener("focus", () => {
   document.querySelector(".searchErrorMsg").textContent = "";
 });
 
+
+
+
 function createOptionGame() {
   const gameList = getLocalStorageDataAndRemoveBolao();
   const select = document.querySelector("#searchName");
@@ -318,6 +321,7 @@ async function fetchGameResult(id, index, name) {
     const json = await fetch(`${urlSearched}${id}/latest`).then((resposta) =>
       resposta.json()
     );
+    console.log(json)
     const novoConteudo = criarConteudoHtml(json, name);
     // createAwardsInfo(json, origin);
     gameInfo.innerHTML = novoConteudo;

@@ -271,7 +271,7 @@
           ]
         },
         {
-          "price": "VALOR ERRADO!",
+          "price": "99,99 (valor teste!)",
           "games": 50,
           "numbersPerGame": 5,
           "quotas": 5,

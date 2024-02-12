@@ -1,176 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 20px;
-      }
-      .page {
-        width: 205mm;
-        height: 292mm;
-        margin: auto;
-        /* border: 1px solid; */
-        padding: 10px 30px;
-      }
-      h2 {
-        color: #333;
-        border-bottom: 2px solid #333;
-        font-size: 20px;
-        text-align: center;
-      }
-      h1 {
-        font-size: 16px;
-      }
-
-      p {
-        color: #666;
-        text-align: justify;
-        font-size: 15px;
-        line-height: 20px;
-      }
-
-      strong {
-        color: #000;
-      }
-      code {
-        font-family: "Courier New", monospace;
-      }
-      .signature {
-        width: 100%;
-        text-align: center;
-        font-size: 15px;
-        line-height: 14px;
-      }
-      .signature span {
-        font-size: 11px;
-      }
-      hr {
-        position: relative;
-        bottom: 37px;
-      }
-    </style>
-    <title>Pacotes e Considerações para o Desenvolvimento do Site</title>
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <div class="page">
-      <h2 style="margin-bottom: 10px">
-        Pacotes e Considerações para o Desenvolvimento do Site:
-      </h2>
+    <h1>Teste</h1>
+    <script>
+      async function obterResultadoLoteriaFederal() {
+        const url =
+          "http://loterias.caixa.gov.br/wps/portal/loterias/landing/federal/";
 
-      <p style="margin-bottom: 10px">
-        <strong>Domínio:</strong><br />
-        A partir de R$ 26,90 (por um ano) na LocaWeb ".com.br"
-      </p>
+        try {
+          // Realiza a requisição HTTP
+          const response = await axios.get(url);
 
-      <p style="margin-bottom: 10px">
-        <strong>Servidor:</strong><br />
-        Há vários valores; os mais "econômicos" que observei são a partir de R$
-        6,99 / R$ 11,99 / R$ 16,99... entretanto, os planos são anuais, e o
-        pagamento é feito de uma só vez. Por exemplo, esse plano de R$ 11,99 por
-        mês, para contratá-lo, será necessário efetuar o pagamento para 48 meses
-        de uma só vez, totalizando R$ 575,52...
-      </p>
+          // Carrega o HTML da resposta usando o Cheerio
+          const $ = cheerio.load(response.data);
 
-      <p style="margin-bottom: 10px">
-        <strong>Plugin com resultado dos jogos da loteria:</strong><br />
-        R$ 186,99 (aguardo retorno para confirmar se é um pagamento único)
-      </p>
-      <h1>Valores dos Serviços</h1>
+          // Encontrar o elemento que contém as informações do resultado
+          const resultadoElement = $(".resultado-loteria");
 
-      <p style="line-height: 18px; font-size: 14px">
-        1. Domínio: <code>R$ 26,90</code> (por um ano)
-      </p>
-      <p style="line-height: 18px; font-size: 14px">
-        2. Servidor: <code>R$ 575,52</code> (pagamento único para 48 meses do
-        plano de R$ 11,99 por mês)
-      </p>
-      <p style="line-height: 18px; font-size: 14px">
-        3. Plugin com resultado dos jogos da loteria: <code>R$ 186,99</code>
-      </p>
+          // Extrair o texto do elemento
+          const resultadoTexto = resultadoElement.text();
 
-      <p style="line-height: 18px; font-size: 14px">
-        A soma desses valores é: <code>R$ 789,41</code>
-      </p>
+          // Exibir o resultado
+          console.log(resultadoTexto);
+        } catch (error) {
+          console.error(
+            "Erro ao obter o resultado da Loteria Federal:",
+            error.message
+          );
+        }
+      }
 
-      <p style="line-height: 18px; font-size: 14px; margin-bottom: 15px">
-        Portanto, o valor total correspondente a cada serviço é
-        <b> <code>R$ 789,41</code></b
-        >.
-      </p>
-
-      <p style="margin-bottom: 10px">
-        <strong>Considerações sobre o WordPress:</strong><br />
-        No WordPress, é possível ter uma tela administrativa; no entanto, para
-        cada seção que se deseja adicionar a essa tela, é necessário ter um
-        plugin instalado nessa seção. Vale ressaltar que, embora o WordPress
-        seja uma das formas mais populares de desenvolver um site no mundo, o
-        uso excessivo de plugins pode prejudicar o site, além do risco de
-        adquirir algum script mal-intencionado que possa comprometer a segurança
-        do site, como a propagação de vírus, indisponibilidade, alterações
-        indesejadas ou até mesmo bloqueio do acesso às modificações/edições do
-        site.
-        <b
-          >E assim como o plugin que retorna o resultado dos jogos da loteria,
-          estes outros plugins também são pagos.</b
-        >
-      </p>
-
-      <p style="margin-bottom: 10px">
-        <strong>Estratégia Inicial e Investimentos:</strong><br />
-        Considerando o contexto atual, em que, inicialmente, é necessário
-        verificar se o site terá sucesso ou não, é prudente não investir muito
-        de imediato. Além disso, é mais sensato gastar o mínimo possível no
-        desenvolvimento inicial do site e direcionar mais recursos disponíveis
-        para investir em tráfego pago, o que é mais eficaz para atrair mais
-        visitantes e gerar um número significativo de visualizações no site,
-        pois sem visitas, não haverá vendas.
-      </p>
-
-      <p style="margin-bottom: 10px">
-        Dessa forma, sugiro que, neste primeiro momento, adquira apenas o
-        domínio. Manteremos o site estático, e acredito que existem algumas
-        plataformas onde podemos hospedá-lo com seu próprio domínio de forma
-        gratuita (ou com custo baixo), desde que seja estático.
-      </p>
-      <p style="margin-bottom: 10px">
-        Após o lançamento, darei um prazo para realizar atualizações nos cards
-        dos bolões sem cobrar mais por isso. Acredito que em
-        <b>45 a 60 dias</b> já será possível avaliar se vale a pena investir
-        mais no site ou não. Durante esse período, farei as atualizações uma,
-        duas ou três vezes por mês, ou até mesmo uma vez por semana, caso seja
-        necessário, nos cards dos bolões da página inicial, sem custos
-        adicionais de manutenção. Você me fornece as alterações desejadas nos
-        cards dos bolões, incluindo a nova imagem e outras informações do bolão,
-        e eu farei os ajustes necessários. Ao final desse prazo, você terá uma
-        ideia se deseja investir contratando um servidor e atualizando o site
-        com uma tela administrativa de edição de conteúdo, ou se prefere
-        mantê-lo estático.
-      </p>
-      <p style="margin-bottom: 10px">
-        Entretanto, após o prazo estipulado, caso decida que eu continue com a
-        manutenção do site, certamente oferecerei um valor acessível, que será
-        vantajoso para você em comparação com outras opções. No entanto, será
-        necessário cobrar pela manutenção, e o valor será combinado
-        posteriormente, após o término do prazo inicial de 45 a 60 dias.
-      </p>
-      <p class="signature">
-        <br />Isaias Santana dos Santos <br />
-        <span
-          >Desenvolvedor Web "<a href="https://isaiassantana.com.br/"
-            >https://isaiassantana.com.br/</a
-          >"
-          <hr />
-        </span>
-      </p>
-    </div>
+      // Chama a função para obter o resultado
+      obterResultadoLoteriaFederal();
+    </script>
   </body>
 </html>
