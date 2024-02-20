@@ -3,14 +3,47 @@ const urlsToCache = [
   "/index.html",
   "/css/index.css",
   "/js/index.js",
-  "/offline.html", // Adicione a página offline ao cache
-  // Adicione outros recursos que você deseja armazenar em cache
+  "/contact.html",
+  "/js/contact.js",
+  "/css/contact.css",
+  "/aboutUs.html",
+  "/js/aboutUs.js",
+  "/css/aboutUs.css",
+  "/howItWorks.html",
+  "/js/howItWorks.js",
+  "/css/howItWorks.css",
+  "/product.html",
+  "/js/product.js",
+  "/css/product.css",
+  "/admin.html",
+  "/js/admin.js",
+  "/css/admin.css",
+  "/responsible-policy.html",
+  "/js/responsible-policy.js",
+  "/css/responsible-policy.css",
+  "/results.html",
+  "/js/results.js",
+  "/css/results.css",
+  "/offline.html",
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
+      return Promise.all(
+        urlsToCache.map((url) => {
+          return fetch(url)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`Request failed for ${url}`);
+              }
+              return cache.put(url, response);
+            })
+            .catch((error) => {
+              console.error("Failed to cache", url, error);
+            });
+        })
+      );
     })
   );
 });
